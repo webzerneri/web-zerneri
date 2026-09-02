@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés Zerneri - Escultor y Artista Plástico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #8b7355;
+            --accent: #a8936f;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --text: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Biografía */
+        .bio-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .bio-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-left: 3px solid var(--accent);
+            background: var(--light-gray);
+        }
+
+        .bio-quote-author {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--primary);
+        }
+
+        .bio-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-highlight {
+            background: var(--light-gray);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .bio-highlight h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .bio-highlight ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bio-highlight li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .bio-highlight li:last-child {
+            border-bottom: none;
+        }
+
+        /* Obras Grid */
+        .obras-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .obra-card {
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .obra-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .obra-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .obra-info {
+            padding: 2rem;
+        }
+
+        .obra-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .obra-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Tienda */
+        .tienda-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .producto-card {
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .producto-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .producto-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .producto-info {
+            padding: 2rem;
+        }
+
+        .producto-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .producto-detalles {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .producto-precio {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-consultar {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .btn-consultar:hover {
+            background: var(--secondary);
+        }
+
+        /* Taller */
+        .taller-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .taller-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: #666;
+        }
+
+        .taller-section {
+            background: var(--light-gray);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 5px;
+        }
+
+        .taller-section h3 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .taller-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .residencia-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .residencia-info div {
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 5px;
+        }
+
+        .residencia-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cursos */
+        .cursos-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .curso-card {
+            background: var(--light-gray);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .curso-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .curso-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .proximamente {
+            text-align: center;
+            font-style: italic;
+            color: var(--secondary);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Prensa */
+        .prensa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .prensa-item {
+            padding: 2rem;
+            border: 1px solid var(--medium-gray);
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .prensa-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .prensa-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .prensa-item p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .prensa-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .prensa-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contacto */
+        .contacto-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contacto-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contacto-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .contacto-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--medium-gray);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-enviar:hover {
+            background: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .obras-grid,
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .residencia-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ANDRÉS ZERNERI</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#biografia">Biografía</a></li>
+                <li><a href="#obra">Obra</a></li>
+                <li><a href="#tienda">Tienda</a></li>
+                <li><a href="#taller">Taller</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#prensa">Prensa</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>ANDRÉS ZERNERI</h1>
+            <p>ESCULTOR · ARTISTA PLÁSTICO</p>
+        </div>
+    </section>
+
+    <!-- Biografía -->
+    <section id="biografia">
+        <h2>Biografía</h2>
+        <div class="bio-container">
+            <div class="bio-quote">
+                "Zerneri es un obrero del arte, y todos los proyectos sociales que realiza son ejercidos desde su propia experiencia de clase, no baja ni se acerca a los pobres porque nunca dejó de serlo. Consustanciado con el proletariado cree en la fuerza que nace de lo colectivo y no es un proveedor sino un aprendiz de estas experiencias."
+                <div class="bio-quote-author">— Osvaldo Bayer</div>
+            </div>
+
+            <p class="bio-text">
+                Artista multidisciplinario con más de 30 años de trayectoria especializado en escultura monumental, arte público participativo y gestión cultural. Reconocido internacionalmente por sus metodologías innovadoras que integran participación comunitaria en la creación de obras de gran escala.
+            </p>
+
+            <p class="bio-text">
+                Andrés Zerneri nació el 6 de octubre de 1972 en la provincia de Buenos Aires. Actualmente reside en Villa La Angostura, Provincia del Neuquén, donde dirige la Residencia Artística Internacional C421 y desarrolla investigación sobre descolonialidad en el arte junto a la antropóloga Rita Segato.
+            </p>
+
+            <p class="bio-text">
+                Forjó su formación de manera no académica, atravesando distintas disciplinas en las artes plásticas. Se desempeñó como escenógrafo a principios de los años 90, obteniendo los premios ACE y Estrella de Mar a la mejor escenografía con obras de teatro comercial de la calle Corrientes de la Ciudad de Buenos Aires. Casi simultáneamente realizó la mitad de las esculturas del Parque temático Tierra Santa, inaugurado en el año 2000.
+            </p>
+
+            <p class="bio-text">
+                Entre los años 2000 y 2005 realizó varios viajes a las ciudades de Düsseldorf, Stuttgart y Karlsruhe, Alemania, para exponer sus pinturas en circuitos de museos y edificios públicos.
+            </p>
+
+            <p class="bio-text">
+                En 2008 dona a la Ciudad de Rosario, Santa Fe, el primer monumento de bronce a Ernesto Che Guevara de la Argentina, obra de 4 metros de altura realizada con 75.000 llaves de bronce donadas por 15.000 personas de toda América Latina.
+            </p>
+
+            <p class="bio-text">
+                En 2009 comienza a dirigir la campaña de recolección de bronce para la construcción del Monumento a la Mujer Originaria junto al historiador Osvaldo Bayer, con la colaboración de Eduardo Galeano, Evo Morales, Rafael Correa, Manu Chao, Ricardo Darín y otros referentes culturales de América Latina.
+            </p>
+
+            <p class="bio-text">
+                En enero de 2012, el Presidente de Bolivia Evo Morales le encarga el Monumento a Juana Azurduy como donación a la Argentina. Tras tres años de trabajo, Zerneri concluye la obra en bronce más grande de Argentina: 9 metros de altura y 25.000 kilos de bronce. Fue inaugurada el 15 de julio de 2015 detrás de la Casa Rosada, en presencia de los jefes de estado.
+            </p>
+
+            <div class="bio-highlight">
+                <h3>Experiencia en Gestión Cultural</h3>
+                <ul>
+                    <li><strong>2023-presente:</strong> Director y Curador, Residencia Artística C421, Villa La Angostura</li>
+                    <li><strong>2022-2023:</strong> Subsecretario de Cultura, Municipalidad de Villa La Angostura</li>
+                    <li><strong>2021-2023:</strong> Director y Fundador, Museo de Arte Contemporáneo (MAC), Villa La Angostura</li>
+                    <li><strong>2020-2021:</strong> Coordinador General de Cultura, Municipalidad de Neuquén Capital</li>
+                    <li><strong>2018-2020:</strong> Creador y Director, Escuela Municipal de Artes y Oficios (EMAOP), Plottier</li>
+                </ul>
+            </div>
+
+            <div class="bio-highlight">
+                <h3>Experiencia Docente</h3>
+                <ul>
+                    <li><strong>2019-presente:</strong> Profesor de Dirección de Arte para Cine, ENERC (Escuela Nacional de Experimentación y Realización Cinematográfica)</li>
+                    <li><strong>1995-presente:</strong> Docente en Artes Plásticas en instituciones públicas y privadas</li>
+                </ul>
+            </div>
+
+            <div class="bio-highlight">
+                <h3>Premios y Reconocimientos</h3>
+                <ul>
+                    <li>Personalidad Destacada de Plottier, Resolución Nº 017/79</li>
+                    <li>Personalidad Destacada de la Ciudad de Marcos Paz, Ord. Mun. 459/14</li>
+                    <li><strong>1996:</strong> Premio ACE a la Mejor Escenografía - "Poliladrón"</li>
+                    <li><strong>1996:</strong> Premio Estrella de Mar a la Mejor Escenografía - "La Flaca Escopeta"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Obra -->
+    <section id="obra">
+        <h2>Obra Monumental</h2>
+        <div class="obras-grid">
+            <div class="obra-card">
+                <img src="/mnt/user-data/uploads/JUANA_AZURDUY.png" alt="Monumento a Juana Azurduy" class="obra-image">
+                <div class="obra-info">
+                    <h3>Monumento a Juana Azurduy</h3>
+                    <p><strong>Año:</strong> 2015</p>
+                    <p><strong>Material:</strong> Bronce, 25 toneladas</p>
+                    <p><strong>Dimensiones:</strong> 9.5 metros de altura</p>
+                    <p><strong>Ubicación:</strong> Plaza del Correo, Buenos Aires</p>
+                    <p>Comisión del Estado Boliviano, donación al Estado Argentino. La escultura en bronce más grande de Argentina.</p>
+                </div>
+            </div>
+
+            <div class="obra-card">
+                <img src="/mnt/user-data/uploads/Monumento_al_Che.jpg" alt="Monumento al Che Guevara" class="obra-image">
+                <div class="obra-info">
+                    <h3>Monumento a Ernesto Che Guevara</h3>
+                    <p><strong>Año:</strong> 2008</p>
+                    <p><strong>Material:</strong> Bronce fundido de 75.000 llaves donadas</p>
+                    <p><strong>Dimensiones:</strong> 4 metros de altura</p>
+                    <p><strong>Ubicación:</strong> Parque Yrigoyen, Rosario, Santa Fe</p>
+                    <p>Primer monumento de bronce a Ernesto Guevara en Argentina. Participación de 15.000 personas de toda América Latina.</p>
+                </div>
+            </div>
+
+            <div class="obra-card">
+                <img src="/mnt/user-data/uploads/Monumento_a_los_pioneros_Plottier.jpg" alt="Monumento a los Pioneros de Plottier" class="obra-image">
+                <div class="obra-info">
+                    <h3>Monumento a Los Pioneros de Plottier</h3>
+                    <p><strong>Año:</strong> 2019</p>
+                    <p><strong>Material:</strong> Bronce, tamaño natural</p>
+                    <p><strong>Ubicación:</strong> 25 de Mayo y Ruta 22, Plottier, Neuquén</p>
+                    <p>Conjunto escultórico que representa a las familias pioneras. Proyecto participativo con descendientes de los fundadores de la ciudad.</p>
+                </div>
+            </div>
+
+            <div class="obra-card">
+                <img src="/mnt/user-data/uploads/MMO.jpg" alt="Monumento a la Mujer Originaria" class="obra-image">
+                <div class="obra-info">
+                    <h3>Monumento a la Mujer Originaria</h3>
+                    <p><strong>Estado:</strong> En desarrollo</p>
+                    <p><strong>Material:</strong> 10 toneladas de bronce (llaves) recolectadas</p>
+                    <p><strong>Dimensiones proyectadas:</strong> Más de 10 metros de altura</p>
+                    <p>Proyecto colaborativo con Osvaldo Bayer. Campaña de recolección de llaves a través de donaciones particulares de toda América Latina.</p>
+                </div>
+            </div>
+
+            <div class="obra-card">
+                <img src="/mnt/user-data/uploads/Imagen_de_WhatsApp_2025-07-10_a_las_09_34_23_f250eb0a.jpg" alt="Instalación Retratos del Cacique Inakayal" class="obra-image">
+                <div class="obra-info">
+                    <h3>Instalación "Retratos del Cacique Inakayal"</h3>
+                    <p><strong>Año:</strong> 2015-2019</p>
+                    <p><strong>Material:</strong> Óleo sobre tela</p>
+                    <p><strong>Dimensiones:</strong> 12 pinturas de 120x120 cm</p>
+                    <p>Configuración circular que establece un emparentamiento simbólico entre los desaparecidos de la dictadura y los pueblos originarios durante la Campaña del Desierto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tienda -->
+    <section id="tienda">
+        <h2>Tienda</h2>
+        <div class="tienda-intro">
+            <p>Obras originales y publicaciones disponibles. Los precios de las pinturas varían según tamaño y técnica, desde $2.000.000 pesos argentinos. Para consultas sobre disponibilidad y adquisición, contactar directamente.</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProducts('all')">Todas</button>
+            <button class="filter-btn" onclick="filterProducts('pintura')">Pinturas</button>
+            <button class="filter-btn" onclick="filterProducts('escultura')">Esculturas</button>
+            <button class="filter-btn" onclick="filterProducts('libro')">Libro</button>
+        </div>
+
+        <div class="productos-grid" id="productosGrid">
+            <!-- Productos se cargan dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Taller -->
+    <section id="taller">
+        <h2>Taller</h2>
+        <div class="taller-container">
+            <p class="taller-intro">
+                El taller de Andrés Zerneri es un espacio de creación, experimentación y encuentro artístico ubicado en Villa La Angostura, Neuquén, en plena Patagonia argentina.
+            </p>
+
+            <div class="taller-section">
+                <h3>Residencia Artística C421</h3>
+                <p>
+                    Desde 2023, Zerneri dirige la Residencia Artística Internacional C421, un programa multidisciplinario que convoca a artistas, investigadores y creadores de diversas disciplinas para desarrollar proyectos en diálogo con el territorio patagónico y las comunidades locales.
+                </p>
+                <p>
+                    La residencia se concibe como un espacio de intercambio, formación y producción artística que promueve la experimentación, la reflexión crítica y el trabajo colaborativo. Los residentes tienen acceso a instalaciones equipadas para diferentes prácticas artísticas y participan de un programa de actividades que incluye charlas, talleres y encuentros con la comunidad.
+                </p>
+                
+                <div class="residencia-info">
+                    <div>
+                        <h4>Ubicación</h4>
+                        <p>Camino del Cóndor 421, Villa La Angostura, Neuquén, Argentina</p>
+                    </div>
+                    <div>
+                        <h4>Contacto</h4>
+                        <p>Para consultas sobre residencias y visitas al taller: zerneriandres3@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="taller-section">
+                <h3>Espacio de Trabajo</h3>
+                <p>
+                    El taller cuenta con equipamiento para escultura, pintura y técnicas mixtas. Es un espacio donde se desarrollan desde pequeñas piezas hasta proyectos monumentales, manteniendo siempre un compromiso con la experimentación material y la búsqueda artística.
+                </p>
+                <p>
+                    A lo largo de los años, este espacio ha sido testigo de la creación de obras que luego fueron emplazadas en espacios públicos de Argentina y otros países, así como de proyectos de arte participativo que involucran a comunidades enteras.
+                </p>
+            </div>
+
+            <div class="taller-section">
+                <h3>Proyectos de Investigación</h3>
+                <p>
+                    Actualmente, en el taller se desarrolla una investigación colaborativa sobre "Descolonialidad y Ruptura desde el Arte" junto a la antropóloga Rita Segato, enfocada en el análisis de prácticas decoloniales en el arte público latinoamericano.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos">
+        <h2>Cursos y Clases</h2>
+        <div class="cursos-container">
+            <div class="curso-card">
+                <h3>Taller de Dibujo</h3>
+                <p>Exploración de técnicas de dibujo desde lo fundamental hasta procesos más complejos. Trabajo con diversos materiales y enfoques tanto figurativos como abstractos.</p>
+                <p class="proximamente">Próximamente - Información y fechas en desarrollo</p>
+            </div>
+
+            <div class="curso-card">
+                <h3>Taller de Pintura</h3>
+                <p>Experimentación con técnicas pictóricas, teoría del color, composición y expresión artística. Trabajo con óleo, acrílico y técnicas mixtas.</p>
+                <p class="proximamente">Próximamente - Información y fechas en desarrollo</p>
+            </div>
+
+            <div class="curso-card">
+                <h3>Taller de Escultura</h3>
+                <p>Introducción a procesos escultóricos, trabajo con materiales diversos, moldería y técnicas de construcción tridimensional. Desde piezas pequeñas hasta proyectos monumentales.</p>
+                <p class="proximamente">Próximamente - Información y fechas en desarrollo</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light-gray); border-radius: 5px;">
+                <p style="font-size: 1.1rem; color: var(--secondary);">
+                    Para recibir información sobre talleres, cursos y actividades formativas, por favor contactar directamente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prensa -->
+    <section id="prensa">
+        <h2>Prensa y Medios</h2>
+        <div class="prensa-grid">
+            <div class="prensa-item">
+                <h4>Documental "Juana, bronce y Libertad"</h4>
+                <p><strong>Canal Encuentro, 2015</strong></p>
+                <p>Serie documental de 4 capítulos de 26 minutos sobre la realización del Monumento a Juana Azurduy. Dirección: Pablo Lecaros.</p>
+                <p>Una mirada al proceso creativo, técnico y humano detrás de la obra en bronce más grande de Argentina.</p>
+            </div>
+
+            <div class="prensa-item">
+                <h4>Documental "El arte como trinchera"</h4>
+                <p><strong>Universidad Nacional de La Matanza</strong></p>
+                <p>14 minutos. Dirección: Diego Abregu.</p>
+                <p>Un recorrido por la vida y obra del artista plástico Andrés Zerneri, su compromiso social y su visión del arte como herramienta de transformación.</p>
+                <a href="https://www.youtube.com/watch?v=X_BYg7k6aJQ" target="_blank">Ver documental →</a>
+            </div>
+
+            <div class="prensa-item">
+                <h4>Exposiciones Recientes</h4>
+                <p><strong>2024:</strong> "Cuerpos Resilientes" - Museo Gregorio Álvarez, Neuquén</p>
+                <p><strong>2024:</strong> "Identidades Imaginarias" - Galería Contemporary Artshop, Roma, Italia</p>
+                <p><strong>2019-2024:</strong> Exposiciones en Alemania (Stuttgart, Düsseldorf, Karlsruhe), Francia (París, Tours) y España (Barcelona)</p>
+            </div>
+
+            <div class="prensa-item">
+                <h4>Publicaciones</h4>
+                <p>Capítulos en libros sobre arte público, monumentos y espacio urbano publicados por Editorial de la Facultad de Filosofía y Letras (UBA) y Ediciones EDUNLa.</p>
+                <p>Ilustraciones de tapa para publicaciones de ética, cine y bioética.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-container">
+            <div class="contacto-info">
+                <p><strong>Email:</strong> <a href="mailto:zerneriandres3@gmail.com">zerneriandres3@gmail.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+5491136136130">(+549) 11-36136130</a></p>
+                <p><strong>Ubicación:</strong> Camino del Cóndor 421, Villa La Angostura, Neuquén, Argentina</p>
+                <p><strong>Web:</strong> <a href="http://www.andreszerneri.com.ar" target="_blank">www.andreszerneri.com.ar</a></p>
+                
+                <div class="social-links">
+                    <a href="https://www.instagram.com/andreszerneri/" target="_blank">Instagram: @andreszerneri</a>
+                    <a href="https://www.instagram.com/zerneriobras/" target="_blank">@zerneriobras</a>
+                    <a href="https://www.facebook.com/andres.zerneri.3" target="_blank">Facebook</a>
+                </div>
+            </div>
+
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Andrés Zerneri - Todos los derechos reservados</p>
+        <p>Camino del Cóndor 421, Villa La Angostura, Neuquén, Argentina</p>
+        <p>Teléfono: (+549) 11-36136130</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/andreszerneri/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/andres.zerneri.3" target="_blank">Facebook</a>
+            <a href="mailto:zerneriandres3@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Base de datos de productos
+        const productos = [
+            // Libro
+            {
+                id: 'libro-1',
+                nombre: 'Libro - Proceso Creativo Juana Azurduy',
+                categoria: 'libro',
+                precio: 40000,
+                imagen: '/mnt/user-data/uploads/JUANA_AZURDUY2.png',
+                descripcion: 'Documentación del proceso de creación del Monumento a Juana Azurduy, con fotografías, bocetos y reflexiones del artista.'
+            },
+            
+            // Pinturas
+            {
+                id: 'p1',
+                nombre: 'Retrato con Rayas',
+                categoria: 'pintura',
+                precio: 2000000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_23b7d30a44f0468cadcd6ab9a4cafb9d.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p2',
+                nombre: 'Composición Azul',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_38dbb9f72380411eaeefaef47930637b.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p3',
+                nombre: 'Figura Roja',
+                categoria: 'pintura',
+                precio: 2200000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_40a5df06544840d0a453c4b10c155174.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p4',
+                nombre: 'Mujer Originaria',
+                categoria: 'pintura',
+                precio: 3000000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_48b6e2ba479a4d4b82b5998dc2e330f1_mv2_d_2978_3056_s_4_2.jpg',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p5',
+                nombre: 'Multitud Amarilla',
+                categoria: 'pintura',
+                precio: 2800000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_52eab5b57b1c4a068f71d0f3dc59eea5.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p6',
+                nombre: 'Figura sobre Rayas',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_56f1503d13be484b834bc34bb6b2e7cc_mv2_d_3445_3036_s_4_2_3_11zon.png',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p7',
+                nombre: 'Figura Roja sobre Blanco',
+                categoria: 'pintura',
+                precio: 2600000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_0e93692aa0374d99a79a6fe59f1b6788.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p8',
+                nombre: 'Perfil Oscuro',
+                categoria: 'pintura',
+                precio: 2300000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_1b461dc3d3e44d2da070e316e3f0be50.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p9',
+                nombre: 'Figura Azul',
+                categoria: 'pintura',
+                precio: 2700000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_2d8672bd340b47d9a1b65b201c1bfcd5.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p10',
+                nombre: 'Pareja Amarilla',
+                categoria: 'pintura',
+                precio: 2900000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_3afeef5c1fd549498bed64d377a050e5.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p11',
+                nombre: 'Figura con Círculos',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_3d2f14491be94b8394815e52cd5fd435.png',
+                descripcion: 'Técnica mixta'
+            },
+            {
+                id: 'p12',
+                nombre: 'Niño Boxeador',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_4b6267e0ebb6400890bc6bfaad3b2ad9.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p13',
+                nombre: 'Figura Transparente',
+                categoria: 'pintura',
+                precio: 2800000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_4e87f1b60ee9473f898ff58f663e55f2mv2_d_2552_3527_s_4_2.png',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p14',
+                nombre: 'Corredor Azul',
+                categoria: 'pintura',
+                precio: 2300000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_5e477bc2286f45079f8db5ffe4d684b0.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p15',
+                nombre: 'Grupo en Movimiento',
+                categoria: 'pintura',
+                precio: 2700000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_5eb5a9b3846345cbbbe2ec0920e22bcc.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p16',
+                nombre: 'Creación de Adán Contemporáneo',
+                categoria: 'pintura',
+                precio: 3200000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_7a3d6c74a54d4ba38ab08921d59fd707.png',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p17',
+                nombre: 'Perfil Vertical',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_7abd00d596f24d678bcb45b0c4ef59d9.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p18',
+                nombre: 'Boxeador',
+                categoria: 'pintura',
+                precio: 2600000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_10e6e8c6ae094a6690a45643aceefe50.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p19',
+                nombre: 'Figura Desnuda Blanco y Negro',
+                categoria: 'pintura',
+                precio: 2200000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_11b3d554365c4c62bc7facdb2faa3682mv2.png',
+                descripcion: 'Técnica mixta'
+            },
+            {
+                id: 'p20',
+                nombre: 'Corredores',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_22d7bd9f4104405c92386d436de38a7f.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p21',
+                nombre: 'Tres Figuras Rojas',
+                categoria: 'pintura',
+                precio: 3000000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_5132b6342b2a4ec3b93eedb171c6829d__1_.jpg',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p22',
+                nombre: 'Grito',
+                categoria: 'pintura',
+                precio: 2800000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_5767acda57b04245893c2a6305a03670__1_.jpg',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p23',
+                nombre: 'Saltadora',
+                categoria: 'pintura',
+                precio: 2700000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_9380a601be5f4ec298883341f5852051__1_.jpg',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p24',
+                nombre: 'Figura con X Roja',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_9873bf1582a24f3ebdc09c15092e1a57__1_.jpg',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p25',
+                nombre: 'Corredor',
+                categoria: 'pintura',
+                precio: 2300000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_63f322cbf81e42d1b47c31d2d07e7692_5_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p26',
+                nombre: 'Figura Azul con Gotas',
+                categoria: 'pintura',
+                precio: 2600000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_71faa6bec7ef4905a6e527f923293004_mv2_7_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p27',
+                nombre: 'Barco Amarillo',
+                categoria: 'pintura',
+                precio: 2900000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_76cd9fafebad49509baa6b2e0827a0f5_mv2_d_3453_2759_s_4_2_8_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p28',
+                nombre: 'Mujer con Vestido Verde',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_84d293c9117d489ab700e804e126bfbd_mv2_9_11zon.png',
+                descripcion: 'Técnica mixta'
+            },
+            {
+                id: 'p29',
+                nombre: 'Tres Corredores Amarillos',
+                categoria: 'pintura',
+                precio: 2700000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_88ec30bd0c5748ec8e45d78b80e058a4_10_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p30',
+                nombre: 'Personaje con Sol',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_91d2c72b3fef4e5c94d19fc917befac9_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p31',
+                nombre: 'Fila de Corredores',
+                categoria: 'pintura',
+                precio: 3200000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_201d68f65f134d8fb0e16a15a4ccec86_mv2_d_4667_2450_s_4_2_11zon.png',
+                descripcion: 'Óleo sobre tela - Formato panorámico'
+            },
+            {
+                id: 'p32',
+                nombre: 'Retrato Infantil',
+                categoria: 'pintura',
+                precio: 2200000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_237ccdaa5b644f89b8479191c2b12a41_mv2_11zon.png',
+                descripcion: 'Técnica mixta'
+            },
+            {
+                id: 'p33',
+                nombre: 'Tres Figuras en Ronda',
+                categoria: 'pintura',
+                precio: 2800000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_368e3d77ed98498194684dc9d391323a_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p34',
+                nombre: 'Caras Abstractas',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_386f6f0e08534f968e41c5e49e794171_mv2_d_3547_2795_s_4_2_11zon.png',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p35',
+                nombre: 'Estamos Bien',
+                categoria: 'pintura',
+                precio: 2900000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_862d210cfafc45c7831a0486ea6f2531_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p36',
+                nombre: 'Perfil en Círculo',
+                categoria: 'pintura',
+                precio: 2600000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_907a6ad2d38f43ebb46eb932356dc5a9_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p37',
+                nombre: 'Figura Azul Suspendida',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_2546c045b0384193a7b33fc20b1b2c46_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p38',
+                nombre: 'Retrato con Camiseta Rayada',
+                categoria: 'pintura',
+                precio: 2300000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_2703b14ee2cd4cf9a3d1c27f7a3f29bd_11zon.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p39',
+                nombre: 'Figura Oxidada',
+                categoria: 'pintura',
+                precio: 3000000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_3556ee9d57ac405ebaf46dffbf855918__1_.jpg',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p40',
+                nombre: 'Rostro Cerrado',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_a065ca8fc3f64394a4373278cac30f85_mv2_d_1442_2048_s_2__1_.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p41',
+                nombre: 'Figura con Manos Amarillas',
+                categoria: 'pintura',
+                precio: 2800000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_b3c413c563b842fa9fd5f67aca1c5c93_mv2_d_2048_1314_s_2.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p42',
+                nombre: 'Piano',
+                categoria: 'pintura',
+                precio: 2700000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_bb1234fe5caf462eb00a0f59abf873cb.png',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p43',
+                nombre: 'Corredores en Azul',
+                categoria: 'pintura',
+                precio: 2400000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_bf23cbda78e8478c8cd2c59045cd80ce_mv2_d_3497_3025_s_4_2.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p44',
+                nombre: 'Figura Roja con Serpiente',
+                categoria: 'pintura',
+                precio: 2900000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_c7ab1e48fde3492888af5b6afb62b52e.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p45',
+                nombre: 'Figura Quemada Azul',
+                categoria: 'pintura',
+                precio: 3100000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_c76d4a0c9a47418d94131ac999083086_mv2_d_3397_2975_s_4_2.jpg',
+                descripcion: 'Técnica mixta sobre tela'
+            },
+            {
+                id: 'p46',
+                nombre: 'Figura Blanca sobre Azul',
+                categoria: 'pintura',
+                precio: 2600000,
+                imagen: '/mnt/user-data/uploads/3f5b1c_cd545d29cbab4be495ef37cdc90fc2e6_mv2_d_2965_2975_s_4_2.png',
+                descripcion: 'Óleo sobre tela'
+            },
+            {
+                id: 'p47',
+                nombre: 'Niña con Aureola',
+                categoria: 'pintura',
+                precio: 2500000,
+                imagen: '/mnt/user-data/uploads/IMG-20250724-WA0080.jpg',
+                descripcion: 'Óleo sobre tela'
+            },
+            
+            // Esculturas
+            {
+                id: 'e1',
+                nombre: 'Escultura en Bronce - Serie Patagónica',
+                categoria: 'escultura',
+                precio: null,
+                imagen: '/mnt/user-data/uploads/IMG-20250724-WA0039.jpg',
+                descripcion: 'Escultura en bronce. Consultar precio y disponibilidad.'
+            },
+            {
+                id: 'e2',
+                nombre: 'Escultura en Bronce - Figura con Escudo',
+                categoria: 'escultura',
+                precio: null,
+                imagen: '/mnt/user-data/uploads/IMG-20250724-WA0040.jpg',
+                descripcion: 'Escultura en bronce. Consultar precio y disponibilidad.'
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function loadProducts() {
+            const grid = document.getElementById('productosGrid');
+            const filtered = currentFilter === 'all' 
+                ? productos 
+                : productos.filter(p => p.categoria === currentFilter);
+            
+            grid.innerHTML = filtered.map(producto => `
+                <div class="producto-card">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-image" onerror="this.style.background='linear-gradient(135deg, #8b7355, #a8936f)';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';this.innerHTML='<span style=color:white;font-size:3rem>🎨</span>'">
+                    <div class="producto-info">
+                        <h3>${producto.nombre}</h3>
+                        <p class="producto-detalles">${producto.descripcion}</p>
+                        <div class="producto-precio">
+                            ${producto.precio ? '$' + producto.precio.toLocaleString('es-AR') : 'Consultar'}
+                        </div>
+                        <a href="#contacto" class="btn-consultar">CONSULTAR</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            loadProducts();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submit
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Gracias por tu mensaje. Te responderemos a la brevedad.');
+            event.target.reset();
+        }
+
+        // Inicializar
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+        });
+    </script>
+</body>
+</html>

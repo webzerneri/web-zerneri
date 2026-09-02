@@ -1,0 +1,685 @@
+/* =========================================================
+   SOBERANÍA DESDE LA PAZ
+   ========================================================= */
+
+.soberania-page {
+  min-height: 100vh;
+  background: #f7f6f3;
+  color: #182638;
+  font-family: inherit;
+  padding-top: 92px;
+}
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+.soberania-page * {
+  box-sizing: border-box;
+}
+
+.soberania-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.soberania-kicker {
+  margin-bottom: 24px;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.5;
+
+  color: #92754a;
+}
+
+.soberania-page h1,
+.soberania-page h2,
+.soberania-page p {
+  margin-top: 0;
+}
+
+.soberania-page p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #3c4652;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.soberania-intro {
+  width: min(1100px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 105px 0 95px;
+
+  text-align: center;
+}
+
+.soberania-intro h1 {
+  margin: 0;
+
+  font-size: clamp(54px, 7vw, 92px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -3px;
+
+  color: #182638;
+}
+
+.soberania-line {
+  width: 48px;
+  height: 1px;
+
+  margin: 34px auto;
+
+  background: #a7895b;
+}
+
+.soberania-lead {
+  margin: 0 auto;
+
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+
+  color: #182638 !important;
+}
+
+/* =========================================================
+   OBRA PRINCIPAL
+   ========================================================= */
+
+.soberania-obra {
+  width: min(1100px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 0 0 125px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+
+  gap: 85px;
+
+  align-items: center;
+}
+
+.soberania-obra-image {
+  width: 100%;
+
+  padding: 18px;
+
+  background: #eeeae3;
+
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.10);
+}
+
+.soberania-obra-image img {
+  width: 100%;
+  height: auto;
+}
+
+.soberania-obra-text {
+  padding-right: 15px;
+}
+
+.soberania-obra-text > span {
+  display: block;
+
+  margin-bottom: 25px;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: #92754a;
+}
+
+.soberania-obra-text h2 {
+  margin-bottom: 30px;
+
+  font-size: clamp(35px, 4vw, 55px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.soberania-obra-text p {
+  margin-bottom: 22px;
+}
+
+.soberania-obra-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   FRASE
+   ========================================================= */
+
+.soberania-frase {
+  width: 100%;
+
+  padding: 105px 30px;
+
+  background: #182638;
+
+  color: #f5f2eb;
+
+  text-align: center;
+}
+
+.soberania-frase-inner {
+  max-width: 850px;
+  margin: 0 auto;
+
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   GALERÍA
+   ========================================================= */
+
+.soberania-gallery {
+  width: min(1100px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 125px 0;
+}
+
+.soberania-section-title {
+  margin-bottom: 45px;
+
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+
+  color: #92754a;
+}
+
+.soberania-gallery-grid {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+
+  grid-template-areas:
+    "main portrait"
+    "collage phrases";
+
+  gap: 28px;
+}
+.soberania-gallery-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.soberania-gallery-grid figure {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.soberania-gallery-grid img {
+  width: 100%;
+  height: auto;
+
+  transition: transform 0.5s ease;
+}
+
+.gallery-main {
+  grid-area: main;
+}
+
+.gallery-portrait {
+  grid-area: portrait;
+}
+
+.gallery-collage {
+  grid-area: collage;
+}
+
+.gallery-frases {
+  grid-area: phrases;
+}
+
+.soberania-gallery-grid figure:hover img {
+  transform: scale(1.015);
+}
+
+/* =========================================================
+   HISTORIA
+   ========================================================= */
+
+.soberania-story {
+  width: min(900px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 30px 0 130px;
+}
+
+.soberania-story h2 {
+  margin-bottom: 38px;
+
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.soberania-story p {
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+/* =========================================================
+   ANDRÉS
+   ========================================================= */
+
+.soberania-andres {
+  width: min(1100px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 0 0 130px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.75fr);
+
+  gap: 75px;
+
+  align-items: center;
+}
+
+.soberania-andres-image {
+  background: #ebe8e2;
+}
+
+.soberania-andres-image img {
+  width: 100%;
+}
+
+.soberania-andres-text h2 {
+  margin-bottom: 30px;
+
+  font-size: clamp(36px, 4vw, 55px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1px;
+}
+
+.soberania-andres-text p {
+  margin-bottom: 35px;
+}
+
+.soberania-video-button,
+.soberania-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  min-height: 48px;
+
+  padding: 0 24px;
+
+  border: 1px solid #182638;
+
+  background: #182638;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.soberania-video-button:hover,
+.soberania-contact-button:hover {
+  background: transparent;
+  color: #182638;
+}
+
+.soberania-video-button span,
+.soberania-contact-button span {
+  font-size: 15px;
+}
+.soberania-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.soberania-video-modal video {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+}
+
+.soberania-video-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+
+  border: 0;
+  background: transparent;
+
+  color: #fff;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   PRESENTACIONES
+   ========================================================= */
+
+.soberania-presentaciones {
+  width: 100%;
+
+  padding: 120px max(60px, calc((100vw - 1100px) / 2));
+
+  background: #ebe8e2;
+}
+
+.soberania-presentaciones h2 {
+  margin-bottom: 32px;
+
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.presentaciones-intro {
+  max-width: 700px;
+
+  margin-bottom: 60px;
+}
+
+.presentaciones-list {
+  max-width: 850px;
+}
+
+.presentacion-item {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+
+  gap: 20px;
+
+  padding: 24px 0;
+
+  border-top: 1px solid rgba(24, 38, 56, 0.18);
+}
+
+.presentacion-item:last-child {
+  border-bottom: 1px solid rgba(24, 38, 56, 0.18);
+}
+
+.presentacion-item > span {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  color: #92754a;
+}
+
+.presentacion-item strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.presentacion-item small {
+  display: block;
+
+  font-size: 13px;
+
+  color: #727a82;
+}
+
+/* =========================================================
+   CONVOCATORIA
+   ========================================================= */
+
+.soberania-convocatoria {
+  width: min(900px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 135px 0;
+}
+
+.soberania-convocatoria h2 {
+  margin-bottom: 38px;
+
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+}
+
+.soberania-convocatoria p {
+  max-width: 720px;
+
+  margin-bottom: 24px;
+}
+
+.soberania-contact-button {
+  margin-top: 22px;
+}
+
+/* =========================================================
+   CIERRE
+   ========================================================= */
+
+.soberania-cierre {
+  width: 100%;
+
+  background: #182638;
+}
+
+.soberania-cierre img {
+  width: min(900px, calc(100% - 120px));
+
+  margin: 0 auto;
+
+  padding-top: 90px;
+}
+
+.soberania-cierre-text {
+  width: min(900px, calc(100% - 120px));
+
+  margin: 0 auto;
+
+  padding: 55px 0 100px;
+
+  text-align: center;
+
+  color: #f5f2eb;
+}
+
+.soberania-cierre-text span {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: #c3a56c;
+}
+
+.soberania-cierre-text p {
+  max-width: none;
+
+  margin: 0;
+
+  color: #f5f2eb;
+
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .soberania-page {
+    padding-top: 76px;
+  }
+
+  .soberania-intro,
+  .soberania-obra,
+  .soberania-gallery,
+  .soberania-story,
+  .soberania-andres,
+  .soberania-convocatoria {
+    width: min(100% - 50px, 680px);
+  }
+
+  .soberania-obra,
+  .soberania-andres {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .soberania-obra-text {
+    padding-right: 0;
+  }
+
+  .soberania-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      "main main"
+      "portrait portrait"
+      "collage phrases";
+  }
+
+  .soberania-presentaciones {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .soberania-cierre img,
+  .soberania-cierre-text {
+    width: min(100% - 50px, 680px);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .soberania-intro {
+    padding: 70px 0 65px;
+  }
+
+  .soberania-intro h1 {
+    font-size: 48px;
+    letter-spacing: -1.8px;
+  }
+
+  .soberania-lead {
+    font-size: 17px !important;
+  }
+
+  .soberania-obra {
+    padding-bottom: 80px;
+  }
+
+  .soberania-obra-image {
+    padding: 10px;
+  }
+
+  .soberania-obra-text h2,
+  .soberania-story h2,
+  .soberania-andres-text h2,
+  .soberania-convocatoria h2,
+  .soberania-presentaciones h2 {
+    font-size: 38px;
+  }
+
+  .soberania-frase {
+    padding: 75px 25px;
+  }
+
+  .soberania-frase-inner {
+    font-size: 25px;
+  }
+
+  .soberania-gallery {
+    padding: 80px 0;
+  }
+
+  .soberania-gallery-grid {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "main"
+      "portrait"
+      "collage"
+      "phrases";
+
+    gap: 18px;
+  }
+
+  .soberania-story {
+    padding-bottom: 80px;
+  }
+
+  .soberania-andres {
+    padding-bottom: 85px;
+  }
+
+  .soberania-presentaciones {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .presentacion-item {
+    grid-template-columns: 38px 1fr;
+  }
+
+  .soberania-convocatoria {
+    padding: 85px 0;
+  }
+
+  .soberania-video-button,
+  .soberania-contact-button {
+    width: 100%;
+  }
+
+  .soberania-cierre img {
+    padding-top: 55px;
+  }
+
+  .soberania-cierre-text {
+    padding-top: 40px;
+    padding-bottom: 70px;
+  }
+}

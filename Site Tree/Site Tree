@@ -1,0 +1,120 @@
+src/
+├── components/
+│   ├── Footer.jsx
+│   ├── Header.jsx
+│   ├── Hero.jsx
+│   └── Works.jsx
+├── data/
+│   └── works.js
+├── pages/
+│   ├── Biografia.jsx
+│   ├── Monumentos.jsx
+│   └── WorkPage.jsx
+├── App.jsx
+├── main.jsx
+└── style.css
+
+images/
+  branding/       → identidad del sitio
+  hero/           → imágenes principales
+  works/          → obras
+      juana-azurduy/
+      otra-obra/
+      otra-obra/
+
+public/
+└── images/
+    ├── branding/
+    ├── hero/
+    └── works/
+        └── juana-azurduy/
+            ├── juana-azurduy.jpg
+            ├── Juana1.png
+            ├── Juana2.jpg
+            └── Juana3.png
+
+src/
+├── components/
+│   ├── Footer.jsx
+│   ├── Header.jsx
+│   ├── Hero.jsx
+│   └── Works.jsx
+├── data/
+│   └── works.js
+├── pages/
+│   ├── Biografia.jsx
+│   ├── GestionCultural.jsx
+│   ├── Monumentos.jsx
+│   └── WorkPage.jsx
+├── App.jsx
+├── main.jsx
+└── style.css
+
+public/images/branding → los dos logos.
+public/images/hero → las imágenes de Juana para el hero.
+public/images/works/juana-azurduy → las 4 imágenes de Juana.
+src/components → Footer, Header, Hero, Works.
+src/data/works.js
+src/pages → Biografia, GestionCultural, Monumentos, WorkPage.
+App.jsx centralizando las rutas y el Footer.
+
+
+public/images/works/
+├── juana-azurduy/
+│   ├── monimg01.jpg
+│   ├── monimg02.jpg
+│   ├── monimg03.jpg
+│   └── monimg04.jpg
+├── che-guevara/
+│   ├── monimg01.jpg
+│   ├── monimg02.jpg
+│   ├── monimg03.jpg
+│   └── monimg04.jpg
+├── pioneros-plottier/
+│   ├── monimg01.jpg
+│   ├── monimg02.jpg
+│   ├── monimg03.jpg
+│   └── monimg04.jpg
+├── hermanos-emiliozzi/
+│   ├── monimg01.jpg
+│   ├── monimg02.jpg
+│   ├── monimg03.jpg
+│   └── monimg04.jpg
+└── mujer-originaria/
+    ├── monimg01.jpg
+    ├── monimg02.jpg
+    ├── monimg03.jpg
+    └── monimg04.jpg
+public/
+└── images/
+    ├── works/
+    │   └── juana-azurduy/
+    │
+    ├── projects/
+    │   ├── maddem/
+    │   ├── galeria-roma/
+    │   └── soberania-desde-la-paz/
+    │
+    ├── residencia-c421/
+    │
+    └── tienda/
+
+    public/
+├── images/
+│   ├── works/
+│   │   └── ...
+│   │
+│   └── projects/
+│       └── maddem/
+│           ├── maddem.jpg
+│           ├── maddem01.jpg
+│           ├── maddem02.jpg
+│           ├── maddem03.jpg
+│           ├── maddem04.jpg
+│           ├── maddem05.jpg
+│           ├── maddem06.jpg
+│           └── maddem07.jpg
+│
+└── documents/
+    ├── ley-3521-25.pdf
+    └── maddem-dossier.pdf
