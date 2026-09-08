@@ -1,0 +1,292 @@
+.paintings-page {
+  min-height: 100vh;
+}
+
+.paintings-page .category-content {
+  width: min(1400px, calc(100% - 80px));
+  max-width: none;
+  margin: 0 auto;
+  padding: 150px 0 120px;
+}
+
+.paintings-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 45px;
+}
+
+.paintings-header h1 {
+  margin: 0;
+}
+
+.paintings-count {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.paintings-viewer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 68vh;
+}
+
+.painting-image-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 1100px);
+  height: 68vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.painting-main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.paintings-nav {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.paintings-nav:hover {
+  transform: scale(1.05);
+}
+
+.paintings-nav-prev {
+  left: 0;
+}
+
+.paintings-nav-next {
+  right: 0;
+}
+
+.paintings-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 35px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.painting-thumbnail {
+  flex: 0 0 82px;
+  width: 82px;
+  height: 62px;
+  padding: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  opacity: 0.45;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.painting-thumbnail:hover {
+  opacity: 0.8;
+}
+
+.painting-thumbnail.active {
+  opacity: 1;
+  border-color: currentColor;
+}
+
+.painting-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* LIGHTBOX */
+
+.paintings-lightbox {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 90px;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.paintings-lightbox-image {
+  display: block;
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.paintings-lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 38px;
+  font-weight: 200;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.paintings-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.paintings-lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.paintings-lightbox-prev {
+  left: 28px;
+}
+
+.paintings-lightbox-next {
+  right: 28px;
+}
+
+.paintings-lightbox-counter {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  transform: translateX(-50%);
+  opacity: 0.7;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .paintings-page .category-content {
+    width: calc(100% - 36px);
+    padding: 120px 0 70px;
+  }
+
+  .paintings-header {
+    margin-bottom: 25px;
+  }
+
+  .paintings-viewer {
+    min-height: 58vh;
+  }
+
+  .painting-image-button {
+    width: 100%;
+    height: 58vh;
+  }
+
+  .paintings-nav {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .paintings-nav-prev {
+    left: -5px;
+  }
+
+  .paintings-nav-next {
+    right: -5px;
+  }
+
+  .paintings-thumbnails {
+    gap: 7px;
+    margin-top: 25px;
+  }
+
+  .painting-thumbnail {
+    flex-basis: 68px;
+    width: 68px;
+    height: 52px;
+  }
+
+  .paintings-lightbox {
+    padding: 40px 20px;
+  }
+
+  .paintings-lightbox-image {
+    max-width: 94vw;
+    max-height: 80vh;
+  }
+
+  .paintings-lightbox-nav {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .paintings-lightbox-prev {
+    left: 12px;
+  }
+
+  .paintings-lightbox-next {
+    right: 12px;
+  }
+
+  .paintings-lightbox-close {
+    top: 12px;
+    right: 15px;
+  }
+}

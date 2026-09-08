@@ -13,8 +13,14 @@
     "vite": "^8.2.2"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "@supabase/supabase-js": "^2.116.0",
+    "marzipano": "^0.10.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.2",
+    "three": "^0.185.1",
+    "uuid": "^14.0.2"
   }
 }

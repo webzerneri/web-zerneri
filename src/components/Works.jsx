@@ -39,15 +39,15 @@ const works = [
     title: 'C421',
     subtitle: 'Residencia artística',
     image: '/images/residencia-c421/c421-card.jpg',
-    link: '/residencia-c421',
+    link: '/residencias/c421',
   },
   {
     id: 6,
-    slug: 'tienda',
-    title: 'TIENDA',
-    subtitle: 'Obra y publicaciones',
-    image: '/images/tienda/tienda-card.jpg',
-    link: '/tienda',
+    slug: 'salon',
+    title: 'SALÓN',
+    subtitle: 'Tienda y Galeria',
+    image: '/images/salon/salon-card.jpg',
+    link: '/salon',
   },
 ]
 

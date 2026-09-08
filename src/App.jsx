@@ -14,6 +14,19 @@ import Esculturas from './pages/Esculturas'
 import Maddem from './pages/projects/Maddem'
 import ObrasPrivadasRoma from './pages/ObrasPrivadasRoma'
 import SoberaniaDesdeLaPaz from './pages/SoberaniaDesdeLaPaz'
+import ResidenciaC421 from './pages/ResidenciaC421'
+import Prensa from './pages/Prensa'
+import Salon from './pages/salon/Salon'
+import Tienda from './pages/tienda/Tienda'
+import EspacioEncuentro from './pages/EspacioEncuentro'
+import ContadorNietos from './pages/ContadorNietos'
+import Pescador from './pages/Pescador'
+import RondaDeMujeres from './pages/RondaDeMujeres'
+import Pinturas from './pages/Pinturas'
+import Proyectos from './pages/Proyectos'
+
+
+
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -62,6 +75,7 @@ function App() {
       <Header />
 
       <Routes>
+
         <Route
           path="/"
           element={<HomePage />}
@@ -101,13 +115,60 @@ function App() {
           path="/obras-privadas-roma"
           element={<ObrasPrivadasRoma />}
         />
-      
 
         <Route
-    path="/soberania-desde-la-paz"
-    element={<SoberaniaDesdeLaPaz />}
-  />
-</Routes>
+          path="/soberania-desde-la-paz"
+          element={<SoberaniaDesdeLaPaz />}
+        />
+
+        <Route
+          path="/residencias/c421"
+          element={<ResidenciaC421 />}
+        />
+
+        <Route
+          path="/prensa"
+          element={<Prensa />}
+        />
+
+        <Route
+          path="/salon"
+          element={<Salon />}
+        />
+
+        <Route
+          path="/tienda"
+          element={<Tienda />}
+        />
+
+        <Route
+          path="/proyectos/espacio-de-encuentro"
+          element={<EspacioEncuentro />}
+        />
+
+        <Route
+          path="/proyectos/contador-de-nietos"
+          element={<ContadorNietos />}
+        />
+
+        <Route
+          path="/proyectos/pescador"
+          element={<Pescador />}
+        />
+
+        <Route
+          path="/proyectos/ronda-de-mujeres"
+          element={<RondaDeMujeres />}
+        />
+        <Route
+           path="/pinturas"
+           element={<Pinturas />}
+        /> 
+        <Route
+           path="/proyectos"
+           element={<Proyectos />}
+        /> 
+      </Routes>
 
       <Footer />
     </>

@@ -3,15 +3,22 @@ import { useState } from 'react'
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <>
       <header className="site-header">
-        <a href="/" className="site-brand" aria-label="Andrés Zerneri - Inicio">
+        <a
+          href="/"
+          className="site-brand"
+          aria-label="Andrés Zerneri - Inicio"
+          onClick={closeMenu}
+        >
           <img
-  className="brand-mark"
-  src="/images/branding/az-logo.png"
-  alt=""
-/>
+            className="brand-mark"
+            src="/images/branding/az-logo.png"
+            alt=""
+          />
 
           <span className="brand-divider"></span>
 
@@ -31,33 +38,36 @@ function Header() {
       </header>
 
       <nav className={`main-nav ${menuOpen ? 'open' : ''}`}>
-        <a href="#inicio" onClick={() => setMenuOpen(false)}>
+        <a href="/" onClick={closeMenu}>
           INICIO
         </a>
-
-        <a href="#obra" onClick={() => setMenuOpen(false)}>
-          OBRA
-        </a>
-
-        <a href="#proyectos" onClick={() => setMenuOpen(false)}>
+     
+        <a href="/proyectos" onClick={closeMenu}>
           PROYECTOS
         </a>
 
-        <a href="#residencia" onClick={() => setMenuOpen(false)}>
+        <a href="/residencias/c421" onClick={closeMenu}>
           RESIDENCIA C421
         </a>
 
-        <a href="#biografia" onClick={() => setMenuOpen(false)}>
+{/*
+<a href="/residencias/c421?postular=1" onClick={closeMenu}>
+  C421 - POSTULACIÓN MEDIA BECA
+</a>
+*/}
+
+ <a href="/#obra" onClick={closeMenu}>
+          OBRA
+        </a>
+        
+        <a href="/prensa" onClick={closeMenu}>
+          PRENSA
+        </a>
+<a href="/biografia" onClick={closeMenu}>
           BIOGRAFÍA
         </a>
 
-        <a href="#prensa" onClick={() => setMenuOpen(false)}>
-          PRENSA
-        </a>
-
-        <a href="#contacto" onClick={() => setMenuOpen(false)}>
-          CONTACTO
-        </a>
+        
       </nav>
     </>
   )

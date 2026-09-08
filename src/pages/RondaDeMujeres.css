@@ -1,0 +1,396 @@
+.ronda-page {
+  --ronda-ink: #182c43;
+  --ronda-gold: #a88b4a;
+  --ronda-paper: #f4f1ea;
+  --ronda-soft: #e9e3d7;
+  --ronda-dark: #111b24;
+  background: #fff;
+  color: var(--ronda-ink);
+}
+
+.ronda-page * { box-sizing: border-box; }
+.ronda-page img { display: block; max-width: 100%; }
+.ronda-page a { color: inherit; }
+
+.ronda-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.ronda-label,
+.ronda-kicker,
+.ronda-hero-bottom,
+.ronda-signature {
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.ronda-label {
+  margin: 0 0 22px;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--ronda-gold);
+}
+
+.ronda-copy p,
+.ronda-section-heading > p,
+.ronda-manifiesto-grid p,
+.ronda-red-content > p,
+.ronda-andres-copy p {
+  margin: 0 0 22px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #405063;
+}
+
+.ronda-copy-large p { font-size: 1.08rem; line-height: 1.8; }
+
+/* HERO */
+.ronda-hero {
+  position: relative;
+  min-height: min(88vh, 920px);
+  overflow: hidden;
+  background: #101820;
+}
+
+.ronda-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.ronda-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,15,23,.22) 0%, rgba(8,15,23,.1) 34%, rgba(8,15,23,.78) 100%);
+}
+
+.ronda-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: clamp(150px, 22vh, 250px);
+  color: #fff;
+}
+
+.ronda-kicker {
+  margin: 0 0 18px;
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+.ronda-hero h1 {
+  margin: 0;
+  max-width: 900px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(4rem, 10vw, 8.8rem);
+  line-height: .84;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.ronda-hero-subtitle {
+  margin: 32px 0 0;
+  font-size: clamp(.75rem, 1.1vw, .95rem);
+  letter-spacing: .2em;
+}
+
+.ronda-hero-bottom {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 26px;
+  width: min(1180px, calc(100% - 48px));
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,.88);
+  font-size: .64rem;
+}
+
+.ronda-scroll-mark { font-size: 1.2rem; letter-spacing: 0; }
+
+/* MANIFIESTO */
+.ronda-manifiesto { padding: 120px 0 130px; background: #fff; }
+.ronda-manifiesto-grid,
+.ronda-two-column,
+.ronda-section-heading,
+.ronda-digital-grid,
+.ronda-andres-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(48px, 8vw, 130px);
+  align-items: start;
+}
+
+.ronda-manifiesto h2,
+.ronda-section-heading h2,
+.ronda-two-column h2,
+.ronda-digital-grid h2,
+.ronda-andres-copy h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.8rem, 5.2vw, 5.4rem);
+  line-height: .98;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+/* OBRA */
+.ronda-obra { padding: 120px 0 100px; background: var(--ronda-paper); }
+.ronda-section-heading { margin-bottom: 70px; }
+.ronda-obra-visual {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(24,44,67,.1);
+}
+.ronda-obra-visual img { width: 100%; }
+.ronda-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(24,44,67,.18);
+  margin-top: 70px;
+}
+.ronda-facts div { padding: 28px 24px; border-right: 1px solid rgba(24,44,67,.18); }
+.ronda-facts div:first-child { padding-left: 0; }
+.ronda-facts div:last-child { border-right: 0; }
+.ronda-facts strong { display: block; font-family: Georgia, serif; font-size: 2rem; font-weight: 500; }
+.ronda-facts span { display: block; margin-top: 7px; font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: #667383; }
+
+/* SÉPTIMO */
+.ronda-septimo {
+  padding: 150px 24px;
+  background: var(--ronda-dark);
+  color: #f6f2e9;
+}
+.ronda-septimo-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 100px;
+  align-items: end;
+}
+.ronda-septimo h2 { margin: 0 0 40px; font-family: Georgia, serif; font-size: clamp(3rem, 6vw, 6.2rem); line-height: .94; font-weight: 500; letter-spacing: -.04em; }
+.ronda-septimo-copy p:not(.ronda-label) { max-width: 620px; margin: 0 0 22px; color: rgba(246,242,233,.76); line-height: 1.8; }
+.ronda-septimo .ronda-label { color: #d0b16b; }
+.ronda-septimo-quote { padding: 36px 0 0 40px; border-left: 1px solid rgba(208,177,107,.6); }
+.ronda-septimo-quote span { font-size: .68rem; letter-spacing: .18em; color: #d0b16b; }
+.ronda-septimo-quote p { margin: 20px 0 0; font-family: Georgia, serif; font-size: clamp(1.5rem, 2.4vw, 2.3rem); line-height: 1.25; }
+
+/* ARTE PÚBLICO */
+.ronda-arte-publico { padding: 140px 0; }
+.ronda-emphasis { margin-top: 42px !important; padding-left: 26px; border-left: 2px solid var(--ronda-gold); font-family: Georgia, serif; font-size: 1.35rem !important; line-height: 1.45 !important; color: var(--ronda-ink) !important; }
+
+/* METODOLOGÍA */
+.ronda-metodologia { padding: 120px 0 130px; background: var(--ronda-paper); }
+.ronda-diagram { margin-top: 60px; background: #fff; padding: 18px; border: 1px solid rgba(24,44,67,.1); }
+.ronda-diagram img { width: 100%; }
+
+/* IMPLEMENTACIÓN */
+.ronda-implementacion { padding: 130px 0; background: #fff; }
+.ronda-two-column-wide { align-items: end; }
+.ronda-diagram-implementation { margin-top: 75px; }
+
+/* EXPERIENCIA */
+.ronda-experiencia { padding: 130px 0; background: #f8f5ef; }
+.ronda-experiencia-heading { max-width: 850px; }
+.ronda-experiencia-heading h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(3rem, 6vw, 6.2rem); line-height: .95; font-weight: 500; letter-spacing: -.04em; }
+.ronda-experiencia-image { margin-top: 70px; }
+.ronda-experiencia-image img { width: 100%; }
+.ronda-experiencia-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 930px; margin: 60px auto 0; }
+.ronda-experiencia-copy p { margin: 0; font-size: 1.02rem; line-height: 1.8; color: #405063; }
+
+/* DIGITAL */
+.ronda-digital { padding: 130px 0; background: #fff; }
+.ronda-digital-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; }
+.ronda-digital-list span { padding: 11px 14px; border: 1px solid rgba(168,139,74,.55); color: #596777; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+
+/* TÉCNICA */
+.ronda-tecnica { padding: 130px 0; background: var(--ronda-paper); }
+.ronda-technical-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ronda-technical-grid figure { margin: 0; padding: 18px; background: #fff; border: 1px solid rgba(24,44,67,.1); }
+.ronda-technical-grid img { width: 100%; }
+.ronda-technical-grid figcaption { padding: 18px 4px 2px; font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: #6d7782; }
+.ronda-materials { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 55px; border-top: 1px solid rgba(24,44,67,.16); }
+.ronda-materials div { padding: 25px 20px 0; border-right: 1px solid rgba(24,44,67,.16); }
+.ronda-materials div:first-child { padding-left: 0; }
+.ronda-materials div:last-child { border-right: 0; }
+.ronda-materials strong { display: block; font-size: .66rem; letter-spacing: .13em; color: var(--ronda-gold); }
+.ronda-materials span { display: block; margin-top: 10px; font-size: .9rem; line-height: 1.45; }
+
+/* RED */
+.ronda-red { position: relative; min-height: 760px; overflow: hidden; background: #101820; color: #fff; }
+.ronda-red-image-wrap { position: absolute; inset: 0; }
+.ronda-red-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .82; }
+.ronda-red-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,15,23,.9) 0%, rgba(8,15,23,.65) 42%, rgba(8,15,23,.25) 100%); }
+.ronda-red-content { position: relative; z-index: 2; padding-top: 150px; padding-bottom: 150px; max-width: 1180px; }
+.ronda-red-content h2 { margin: 0 0 35px; font-family: Georgia, serif; font-size: clamp(3.2rem, 7vw, 7rem); line-height: .92; font-weight: 500; letter-spacing: -.045em; }
+.ronda-red-content > p { max-width: 570px; color: rgba(255,255,255,.8); }
+.ronda-red-content .ronda-label { color: #d5b873; }
+.ronda-red-content > span { display: inline-block; margin-top: 35px; font-size: .66rem; letter-spacing: .17em; }
+
+/* ANDRÉS */
+.ronda-andres { padding: 130px 0; }
+.ronda-andres-grid { align-items: center; }
+.ronda-andres-image-wrap { background: #e9e5dd; padding: 16px; }
+.ronda-andres-copy { padding-left: 20px; }
+.ronda-andres-copy h2 { margin-bottom: 38px; }
+
+
+/* DOCUMENTACIÓN */
+.ronda-documentacion {
+  padding: 130px 0;
+  background: var(--ronda-paper);
+}
+.ronda-documentacion-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .75fr);
+  gap: 90px;
+  align-items: end;
+  margin-bottom: 70px;
+}
+.ronda-documentacion-heading h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 6vw, 6.2rem);
+  line-height: .94;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+.ronda-documentacion-heading > p {
+  margin: 0;
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #405063;
+}
+.ronda-documentacion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.ronda-dossier-card {
+  min-height: 230px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  border: 1px solid rgba(24,44,67,.18);
+  background: rgba(255,255,255,.58);
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.ronda-dossier-card:hover {
+  transform: translateY(-4px);
+  background: #fff;
+  border-color: rgba(168,139,74,.65);
+}
+.ronda-dossier-region {
+  font-size: .68rem;
+  letter-spacing: .16em;
+  color: var(--ronda-gold);
+}
+.ronda-dossier-card strong {
+  margin-top: 45px;
+  font-family: Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1;
+  font-weight: 500;
+}
+.ronda-dossier-action {
+  margin-top: 45px;
+  font-size: .66rem;
+  letter-spacing: .14em;
+  color: var(--ronda-ink);
+}
+
+/* CIERRE */
+.ronda-cierre { background: var(--ronda-ink); color: #fff; padding: 150px 24px; text-align: center; }
+.ronda-cierre-inner { max-width: 1000px; margin: 0 auto; }
+.ronda-cierre-label { margin: 0 0 45px; color: #d2b36c; font-size: .68rem; letter-spacing: .17em; }
+.ronda-cierre h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(2.8rem, 6vw, 6.5rem); line-height: .98; font-weight: 500; letter-spacing: -.04em; }
+.ronda-contact-button { display: inline-flex; align-items: center; justify-content: center; margin-top: 55px; padding: 16px 24px; border: 1px solid rgba(255,255,255,.55); color: #fff; text-decoration: none; font-size: .68rem; letter-spacing: .14em; transition: background .25s ease, color .25s ease, border-color .25s ease; }
+.ronda-contact-button:hover { background: #fff; color: var(--ronda-ink); border-color: #fff; }
+.ronda-signature { display: block; margin-top: 38px; color: rgba(255,255,255,.58); font-size: .6rem; }
+
+@media (max-width: 800px) {
+  .ronda-container,
+  .ronda-hero-content,
+  .ronda-hero-bottom { width: min(100% - 32px, 1180px); }
+  .ronda-hero { min-height: 78vh; }
+  .ronda-hero-image { object-position: 50% 56%; }
+  .ronda-hero h1 { font-size: clamp(3.4rem, 17vw, 6rem); }
+  .ronda-hero-subtitle { line-height: 1.6; letter-spacing: .12em; }
+  .ronda-hero-bottom span:first-child { max-width: 220px; line-height: 1.5; }
+
+  .ronda-manifiesto,
+  .ronda-arte-publico,
+  .ronda-metodologia,
+  .ronda-implementacion,
+  .ronda-experiencia,
+  .ronda-digital,
+  .ronda-tecnica,
+  .ronda-andres { padding: 88px 0; }
+
+  .ronda-manifiesto-grid,
+  .ronda-two-column,
+  .ronda-section-heading,
+  .ronda-digital-grid,
+  .ronda-andres-grid,
+  .ronda-septimo-inner,
+  .ronda-experiencia-copy { grid-template-columns: 1fr; gap: 42px; }
+
+  .ronda-section-heading { margin-bottom: 45px; }
+  .ronda-manifiesto h2,
+  .ronda-section-heading h2,
+  .ronda-two-column h2,
+  .ronda-digital-grid h2,
+  .ronda-andres-copy h2 { font-size: clamp(2.8rem, 13vw, 4.5rem); }
+
+  .ronda-obra { padding: 88px 0; }
+  .ronda-obra-visual { padding: 8px; }
+  .ronda-facts { grid-template-columns: 1fr 1fr; }
+  .ronda-facts div,
+  .ronda-facts div:first-child { padding: 22px 12px; border-bottom: 1px solid rgba(24,44,67,.18); }
+  .ronda-facts div:nth-child(2) { border-right: 0; }
+  .ronda-facts div:nth-child(3),
+  .ronda-facts div:nth-child(4) { border-bottom: 0; }
+
+  .ronda-septimo { padding: 100px 16px; }
+  .ronda-septimo-quote { padding: 30px 0 0; border-left: 0; border-top: 1px solid rgba(208,177,107,.6); }
+  .ronda-septimo h2 { font-size: clamp(3rem, 15vw, 5rem); }
+
+  .ronda-diagram { margin-top: 40px; padding: 8px; overflow-x: auto; }
+  .ronda-diagram img { min-width: 700px; max-width: none; }
+  .ronda-diagram-implementation img { min-width: 720px; }
+
+  .ronda-experiencia-image { margin-top: 45px; }
+  .ronda-technical-grid { grid-template-columns: 1fr; gap: 18px; }
+  .ronda-technical-grid figure { padding: 8px; }
+  .ronda-materials { grid-template-columns: 1fr 1fr; }
+  .ronda-materials div,
+  .ronda-materials div:first-child { padding: 20px 12px; border-bottom: 1px solid rgba(24,44,67,.16); }
+  .ronda-materials div:nth-child(2) { border-right: 0; }
+  .ronda-materials div:nth-child(3),
+  .ronda-materials div:nth-child(4) { border-bottom: 0; }
+
+
+  .ronda-documentacion { padding: 88px 0; }
+  .ronda-documentacion-heading { grid-template-columns: 1fr; gap: 35px; margin-bottom: 45px; }
+  .ronda-documentacion-grid { grid-template-columns: 1fr; }
+  .ronda-dossier-card { min-height: 200px; }
+
+  .ronda-red { min-height: 680px; }
+  .ronda-red-content { padding-top: 110px; padding-bottom: 110px; }
+  .ronda-red-overlay { background: linear-gradient(180deg, rgba(8,15,23,.7), rgba(8,15,23,.88)); }
+
+  .ronda-andres-copy { padding-left: 0; }
+  .ronda-cierre { padding: 105px 16px; }
+}

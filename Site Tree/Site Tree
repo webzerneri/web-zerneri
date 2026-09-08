@@ -118,3 +118,271 @@ public/
 └── documents/
     ├── ley-3521-25.pdf
     └── maddem-dossier.pdf
+
+    src/
+└── pages/
+    ├── projects/
+    │   └── Maddem.jsx
+    │
+    ├── salon/
+    │   ├── Salon.jsx
+    │   └── Salon.css
+    │
+    ├── tienda/
+    │   ├── Tienda.jsx
+    │   └── Tienda.css
+    │
+    ├── galeria/
+    │   ├── Galeria.jsx
+    │   └── Galeria.css
+    │
+    ├── Biografia.jsx
+    ├── Monumentos.jsx
+    ├── GestionCultural.jsx
+    ├── Esculturas.jsx
+    ├── ObrasPrivadasRoma.jsx
+    └── SoberaniaDesdeLaPaz.jsx
+
+    public/
+└── images/
+    └── tienda/
+        ├── tienda-panorama.jpg
+        ├── obras/
+        │   ├── dibujo-01-tienda.jpg
+        │   ├── dibujo-02-tienda.jpg
+        │   ├── dibujo-03-tienda.jpg
+        │   ├── dibujo-04-tienda.jpg
+        │   ├── dibujo-05-tienda.jpg
+        │   ├── escultura-01-tienda.jpg
+        │   ├── escultura-02-tienda.jpg
+        │   ├── escultura-03-tienda.jpg
+        │   ├── escultura-04-tienda.jpg
+        │   └── escultura-05-tienda.jpg
+        │
+        └── fichas/
+            ├── dibujo-01-ficha.jpg
+            ├── dibujo-02-ficha.jpg
+            └── ...
+            SALA 1
+│
+├── P1  entrada
+│
+├── P2  avance
+│
+├── P3  frente al arco
+│      └── 🗿 escultura protagonista
+│
+└── P4  puerta → próxima sala
+Room
+├── panoramas
+├── positions
+├── connections
+├── artworks
+└── exits
+public/images/tienda/360/
+
+    sala1-p1.jpg
+    sala1-p2.jpg
+    sala1-p3.jpg
+    sala1-p4.jpg
+
+    Sala
+ ├── P1
+ ├── P2
+ ├── P3
+ └── P4
+      │
+      ├── conexiones
+      ├── hotspots
+      ├── obras
+      └── salida
+      imagen 360 generada
+        ↓
+public/images/tienda/360/sala1-p1.jpg
+        ↓
+Marzipano
+        ↓
+/tienda
+        ↓
+miramos 360° + arriba + abajo + zoom
+
+/images/projects/soberania-desde-la-paz/dossier/proyecto-ordenanza-ciudad-malvinera.pdf
+
+hero-c421-nieve-luces.png          ← la imagen que acabamos de generar
+
+c421-casa-nieve-perspectiva.jpg    ← foto de la casa con nieve, perspectiva
+c421-casa-nieve-frontal.jpg        ← la última que me mandaste
+
+c421-experiencia-taller-01.jpg     ← Andrés leyendo / persona sentada
+c421-experiencia-encuentro-01.jpg  ← personas junto al ventanal
+c421-experiencia-encuentro-02.jpg  ← vista desde atrás junto al ventanal
+c421-experiencia-taller-02.jpg     ← grupo trabajando en el piso
+c421-experiencia-brindis.jpg       ← grupo brindando
+
+c421-territorio-bosque.jpg         ← bosque visto desde el ventanal
+c421-territorio-arcoiris.jpg       ← montaña + arcoíris
+
+Queries
+
+create table public.c421_postulaciones (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+
+  nombre text not null,
+  apellido text not null,
+  email text not null,
+  whatsapp text not null,
+  ubicacion text not null,
+  redes text,
+
+  biografia text not null,
+  disciplina text not null,
+  experiencias text,
+
+  proyecto text not null,
+  dias integer not null,
+  espacio text not null,
+  elementos text not null,
+
+  obras jsonb,
+  material_adicional jsonb,
+
+  estado text not null default 'pendiente'
+);
+
+Activar RLS
+alter table public.c421_postulaciones enable row level security;
+
+Permitir solamente INSERT público
+
+Este es importante: el formulario puede guardar postulaciones, pero nadie desde el navegador puede leerlas.
+
+create policy "Permitir crear postulaciones C421"
+on public.c421_postulaciones
+for insert
+to anon
+with check (true);
+
+Verificar que quedó bien
+select
+  column_name,
+  data_type,
+  is_nullable
+from information_schema.columns
+where table_schema = 'public'
+  and table_name = 'c421_postulaciones'
+order by ordinal_position;
+
+Crear el bucket para los archivos de C-421
+insert into storage.buckets (id, name, public)
+values ('c421-postulaciones', 'c421-postulaciones', false);
+
+Permitir que el formulario suba archivos
+
+create policy "Permitir subir archivos C421"
+on storage.objects
+for insert
+to anon
+with check (
+  bucket_id = 'c421-postulaciones'
+);
+
+Verificar que el bucket existe
+
+select
+  id,
+  name,
+  public
+from storage.buckets
+where id = 'c421-postulaciones';
+
+alter table public.c421_postulaciones
+add constraint c421_postulaciones_estado_check
+check (estado in ('pendiente', 'enviado', 'error'));
+
+Formulario
+   ↓
+Supabase
+   ↓
+Storage
+   ↓
+Edge Function
+   ├── arma el mail
+   ├── adjunta archivos
+   ├── llama a Resend
+   └── cambia estado
+          ↓
+     enviado / error
+
+     La función se llama:
+
+c421-enviar-postulacion
+
+Y hace todo esto:
+
+Webhook INSERT
+      ↓
+lee la postulación
+      ↓
+descarga obras + material desde Storage privado
+      ↓
+arma el mail
+      ↓
+Resend
+      ↓
+📧 Andrés
+      ↓
+estado = enviado
+
+Si algo falla:
+
+estado = error
+Formulario
+    ↓
+c421_postulaciones
+    ↓
+trigger PostgreSQL
+    ↓
+pg_net
+    ↓
+Edge Function
+    ↓
+Resend
+    ↓
+Andrés 📧
+
+
+FORMULARIO
+    │
+    ▼
+INSERT en c421_postulaciones
+    │
+    │  Postgres genera automáticamente:
+    │  id = gen_random_uuid()
+    ▼
+Supabase devuelve el ID
+    │
+    ▼
+SUBIMOS ARCHIVOS
+    │
+    ├── {id}/obras/01.jpg
+    ├── {id}/obras/02.jpg
+    └── {id}/material-adicional.pdf
+    │
+    ▼
+UPDATE de esa misma fila
+    │
+    ├── obras
+    └── material_adicional
+    │
+    ▼
+TRIGGER
+    │
+    ▼
+Edge Function
+    │
+    ▼
+RESEND
+    │
+    ▼
+Andrés recibe el correo 📧

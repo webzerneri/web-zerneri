@@ -51,7 +51,15 @@ function Footer() {
             MADdeM
           </Link>
 
-          <Link to="/proyectos/espacio-de-encuentros">
+<Link to="/proyectos/ronda-de-mujeres">
+            Ronda de Mujeres
+          </Link>
+
+          <Link to="/soberania-desde-la-paz">
+  Soberanía desde la Paz
+</Link>
+
+          <Link to="/proyectos/espacio-de-encuentro">
             Espacio de Encuentros
           </Link>
 
@@ -63,21 +71,25 @@ function Footer() {
             Contador de Nietos
           </Link>
 
+          {/*
           <Link to="/proyectos/general-belgrano">
             Monumento al General Belgrano
           </Link>
+          */}
 
-          <Link to="/proyectos/ronda-de-mujeres">
-            Ronda de Mujeres
-          </Link>
+          
 
-          <Link to="/proyectos/la-mapuche">
-            La Mapuche
-          </Link>
+          {/*
+            <Link to="/proyectos/la-mapuche">
+              Machi
+             </Link>
+           */}
 
+          {/*
           <Link to="/proyectos/mujer-originaria">
             Monumento a Osvaldo Bayer
           </Link>
+          */}
         </div>
 
 
@@ -86,7 +98,7 @@ function Footer() {
         <div className="footer-column">
           <h3>RESIDENCIA</h3>
 
-          <Link to="/residencia-c421">
+          <Link to="/residencias/c421">
             C421
           </Link>
         </div>
@@ -105,19 +117,9 @@ function Footer() {
             Monumentos
           </Link>
 
-          <Link to="/murales">
-            Murales
-          </Link>
-
           <Link to="/pinturas">
             Pinturas
           </Link>
-
-          <Link to="/instalaciones">
-            Performance
-          </Link>
-
-          
         </div>
 
 
@@ -132,17 +134,14 @@ function Footer() {
         </div>
 
 
-        {/* TRAYECTORIA */}
+        {/* BIOGRAFÍA */}
 
         <div className="footer-column">
-          <h3>TRAYECTORIA</h3>
-
-          <Link to="/biografia">
+          <Link
+            to="/biografia"
+            className="footer-section-title"
+          >
             Biografía
-          </Link>
-
-          <Link to="/investigacion">
-            Investigación
           </Link>
         </div>
 
@@ -152,15 +151,45 @@ function Footer() {
         <div className="footer-column">
           <h3>CONTACTO</h3>
 
-          <a
-            href="https://www.instagram.com/andreszerneri/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram de Andrés Zerneri"
-            title="Instagram de Andrés Zerneri"
-          >
-            <InstagramIcon />
-          </a>
+          <div className="footer-instagram-links">
+
+            <a
+              href="https://www.instagram.com/andreszerneri/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de Andrés Zerneri"
+              title="Instagram de Andrés Zerneri"
+              className="footer-instagram-link"
+            >
+              <InstagramIcon />
+              <span>Andrés Zerneri</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/zerneriobras/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de Obras"
+              title="Instagram de Obras"
+              className="footer-instagram-link"
+            >
+              <InstagramIcon />
+              <span>Obras</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/residencia.c421/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de C421"
+              title="Instagram de C421"
+              className="footer-instagram-link"
+            >
+              <InstagramIcon />
+              <span>C421</span>
+            </a>
+
+          </div>
 
           <a href="mailto:zerneriandres3@gmail.com">
             Email

@@ -263,9 +263,70 @@ function SoberaniaDesdeLaPaz() {
       </section>
 
 
+      {/* INICIATIVA MUNICIPAL */}
+      <section className="soberania-iniciativa">
+
+        <div className="soberania-kicker">
+          INICIATIVA MUNICIPAL
+        </div>
+
+        <h2>
+          Soberanía desde la Paz
+          <br />
+          también puede convertirse
+          <br />
+          en una política pública.
+        </h2>
+
+        <p>
+          Andrés Zerneri pone a disposición este proyecto de
+          ordenanza para que municipios y Concejos Deliberantes
+          de todo el país puedan conocerlo, adaptarlo a su
+          jurisdicción y presentarlo para su tratamiento.
+        </p>
+
+        <p>
+          La iniciativa propone declarar a cada ciudad como
+          "Ciudad Malvinera" y crear un programa municipal
+          permanente orientado al conocimiento, la memoria y
+          la afirmación de nuestros derechos soberanos por la
+          vía de la paz y el derecho internacional.
+        </p>
+
+        <div className="soberania-iniciativa-download">
+
+          <span>
+            PROYECTO DE ORDENANZA
+          </span>
+
+          <a
+            className="soberania-contact-button"
+            href="/images/projects/soberania-desde-la-paz/dossier/proyecto-ordenanza-ciudad-malvinera.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DESCARGAR PROYECTO
+            <span>↓</span>
+          </a>
+
+        </div>
+
+      </section>
+
+
       {/* CIERRE */}
-      <section className="soberania-closing">
-        ...
+      <section className="soberania-cierre">
+
+        <div className="soberania-cierre-text">
+          <span>
+            SOBERANÍA DESDE LA PAZ
+          </span>
+
+          <p>
+            Conocer, recordar y construir soberanía desde la paz.
+          </p>
+        </div>
+
       </section>
 
 
