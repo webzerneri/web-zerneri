@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function InstagramIcon() {
@@ -37,9 +38,116 @@ function InstagramIcon() {
   )
 }
 
+function MailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="footer-contact-icon"
+    >
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="14"
+        rx="1.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <path
+        d="M4 7l8 6 8-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="footer-contact-icon"
+    >
+      <path
+        d="M7.2 3.8l3 2.4-1.8 3.1c1 2.1 2.3 3.5 4.4 4.5l3.1-1.8 2.4 3c.6.8.5 1.9-.2 2.5l-1.3 1.1c-.7.6-1.7.8-2.6.5-5.7-1.8-9.8-5.9-11.6-11.6-.3-.9-.1-1.9.5-2.6l1.1-1.3c.6-.7 1.7-.8 2.5-.2z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function PhoneContact() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const phone = '+54 11 3449 0093'
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(phone)
+
+      setCopied(true)
+
+      setTimeout(() => {
+        setCopied(false)
+      }, 1500)
+    } catch {
+      // Si el navegador no permite copiar, no hacemos nada.
+    }
+  }
+
+  return (
+    <div className="footer-phone-wrapper">
+
+      <button
+        type="button"
+        className="footer-semilla-icon"
+        aria-label="Mostrar teléfono de Semilla Studio"
+        title="Teléfono de Semilla Studio"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <PhoneIcon />
+      </button>
+
+      {isOpen && (
+        <div className="footer-phone-popup">
+
+          <span className="footer-phone-number">
+            {phone}
+          </span>
+
+          <button
+            type="button"
+            className="footer-copy-phone"
+            aria-label="Copiar teléfono"
+            title="Copiar teléfono"
+            onClick={handleCopy}
+          >
+            {copied ? '✓' : '⧉'}
+          </button>
+
+        </div>
+      )}
+
+    </div>
+  )
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
+
       <div className="footer-links">
 
         {/* PROYECTOS */}
@@ -51,13 +159,13 @@ function Footer() {
             MADdeM
           </Link>
 
-<Link to="/proyectos/ronda-de-mujeres">
+          <Link to="/proyectos/ronda-de-mujeres">
             Ronda de Mujeres
           </Link>
 
           <Link to="/soberania-desde-la-paz">
-  Soberanía desde la Paz
-</Link>
+            Soberanía desde la Paz
+          </Link>
 
           <Link to="/proyectos/espacio-de-encuentro">
             Espacio de Encuentros
@@ -70,26 +178,6 @@ function Footer() {
           <Link to="/proyectos/contador-de-nietos">
             Contador de Nietos
           </Link>
-
-          {/*
-          <Link to="/proyectos/general-belgrano">
-            Monumento al General Belgrano
-          </Link>
-          */}
-
-          
-
-          {/*
-            <Link to="/proyectos/la-mapuche">
-              Machi
-             </Link>
-           */}
-
-          {/*
-          <Link to="/proyectos/mujer-originaria">
-            Monumento a Osvaldo Bayer
-          </Link>
-          */}
         </div>
 
 
@@ -123,14 +211,88 @@ function Footer() {
         </div>
 
 
-        {/* GESTIÓN CULTURAL */}
+        {/* GESTIÓN CULTURAL + CONTACTO */}
 
-        <div className="footer-column">
-          <h3>GESTIÓN CULTURAL</h3>
+        <div className="footer-column footer-cultural-column">
 
-          <Link to="/gestion-cultural">
-            Gestión cultural
-          </Link>
+          <div className="footer-cultural-section">
+
+            <h3>GESTIÓN CULTURAL</h3>
+
+            <Link to="/gestion-cultural">
+              Gestión cultural
+            </Link>
+
+          </div>
+
+
+          <div className="footer-contact">
+
+            <h3>CONTACTO</h3>
+
+            <div className="footer-contact-grid">
+
+              {/* ANDRÉS ZERNERI */}
+
+              <a
+                href="https://www.instagram.com/andreszerneri/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram de Andrés Zerneri"
+                title="Instagram de Andrés Zerneri"
+                className="footer-contact-item"
+              >
+                <InstagramIcon />
+                <span>Andrés Zerneri</span>
+              </a>
+
+
+              {/* OBRAS */}
+
+              <a
+                href="https://www.instagram.com/zerneriobras/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram de Obras"
+                title="Instagram de Obras"
+                className="footer-contact-item"
+              >
+                <InstagramIcon />
+                <span>Obras</span>
+              </a>
+
+
+              {/* C421 */}
+
+              <a
+                href="https://www.instagram.com/residencia.c421/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram de C421"
+                title="Instagram de C421"
+                className="footer-contact-item"
+              >
+                <InstagramIcon />
+                <span>C421</span>
+              </a>
+
+
+              {/* EMAIL */}
+
+              <a
+                href="mailto:zerneriandres3@gmail.com"
+                aria-label="Email"
+                title="Email"
+                className="footer-contact-item"
+              >
+                <MailIcon />
+                <span>Email</span>
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
 
 
@@ -145,62 +307,61 @@ function Footer() {
           </Link>
         </div>
 
+      </div>
 
-        {/* CONTACTO */}
 
-        <div className="footer-column">
-          <h3>CONTACTO</h3>
+      {/* COPYRIGHT + SEMILLA STUDIO */}
 
-          <div className="footer-instagram-links">
+      <div className="footer-bottom">
+
+        <span className="footer-copyright">
+          © 2026 ANDRÉS ZERNERI
+        </span>
+
+        <div className="footer-semilla">
+
+          <div className="footer-semilla-title">
+            DISEÑO Y DESARROLLO POR SEMILLA STUDIO
+          </div>
+
+          <div className="footer-semilla-icons">
+
+            {/* EMAIL */}
 
             <a
-              href="https://www.instagram.com/andreszerneri/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram de Andrés Zerneri"
-              title="Instagram de Andrés Zerneri"
-              className="footer-instagram-link"
+              href="mailto:semillastudio@outlook.com"
+              aria-label="Email de Semilla Studio"
+              title="semillastudio@outlook.com"
+              className="footer-semilla-icon"
             >
-              <InstagramIcon />
-              <span>Andrés Zerneri</span>
+              <MailIcon />
             </a>
 
-            <a
-              href="https://www.instagram.com/zerneriobras/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram de Obras"
-              title="Instagram de Obras"
-              className="footer-instagram-link"
-            >
-              <InstagramIcon />
-              <span>Obras</span>
-            </a>
+
+            {/* TELÉFONO */}
+
+            <PhoneContact />
+
+
+            {/* INSTAGRAM */}
 
             <a
-              href="https://www.instagram.com/residencia.c421/"
+              href="https://www.instagram.com/semillastudio.app/"
               target="_blank"
               rel="noreferrer"
-              aria-label="Instagram de C421"
-              title="Instagram de C421"
-              className="footer-instagram-link"
+              aria-label="Instagram de Semilla Studio"
+              title="@semillastudio.app"
+              className="footer-semilla-icon"
             >
               <InstagramIcon />
-              <span>C421</span>
             </a>
 
           </div>
 
-          <a href="mailto:zerneriandres3@gmail.com">
-            Email
-          </a>
         </div>
 
       </div>
 
-      <div className="footer-bottom">
-        <span>© 2026 ANDRÉS ZERNERI</span>
-      </div>
     </footer>
   )
 }

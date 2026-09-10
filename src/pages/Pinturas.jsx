@@ -45,6 +45,12 @@ function Pinturas() {
     '/images/works/pinturas/88x30 HOMBRE PANTALON ROJO.jpg',
     '/images/works/pinturas/98x98.jpg',
     '/images/works/pinturas/99x98_HIJA DE INACAYAL.jpg',
+
+    '/images/works/pinturas/20250702_000407.jpg',
+    '/images/works/pinturas/20250703_141808.jpg',
+    '/images/works/pinturas/hombre.png',
+    '/images/works/pinturas/niño.png',
+    '/images/works/pinturas/obra-zerneri.png',
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
