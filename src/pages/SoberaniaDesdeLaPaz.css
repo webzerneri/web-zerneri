@@ -24,6 +24,11 @@
   height: auto;
 }
 
+.soberania-page video {
+  display: block;
+  max-width: 100%;
+}
+
 .soberania-kicker {
   margin-bottom: 24px;
 
@@ -37,6 +42,7 @@
 
 .soberania-page h1,
 .soberania-page h2,
+.soberania-page h3,
 .soberania-page p {
   margin-top: 0;
 }
@@ -203,21 +209,11 @@
 }
 
 .soberania-gallery-grid {
-  display: grid;
-
-  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
-
-  grid-template-areas:
-    "main portrait"
-    "collage phrases";
-
-  gap: 28px;
-}
-.soberania-gallery-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .soberania-gallery-grid figure {
   width: 70%;
   margin-left: auto;
@@ -328,16 +324,18 @@
   padding: 0 24px;
 
   border: 1px solid #182638;
-
   background: #182638;
 
   color: #fff;
 
   text-decoration: none;
 
+  font-family: inherit;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 1.5px;
+
+  cursor: pointer;
 
   transition:
     background 0.25s ease,
@@ -354,6 +352,11 @@
 .soberania-contact-button span {
   font-size: 15px;
 }
+
+/* =========================================================
+   VIDEO MODAL
+   ========================================================= */
+
 .soberania-video-modal {
   position: fixed;
   inset: 0;
@@ -371,6 +374,7 @@
 .soberania-video-modal video {
   max-width: 90vw;
   max-height: 85vh;
+
   width: auto;
   height: auto;
 }
@@ -384,6 +388,8 @@
   background: transparent;
 
   color: #fff;
+
+  font-family: inherit;
   font-size: 42px;
   font-weight: 300;
   line-height: 1;
@@ -462,6 +468,201 @@
 }
 
 /* =========================================================
+   PRENSA Y REGISTRO
+   ========================================================= */
+
+.soberania-prensa {
+  width: min(1100px, calc(100% - 120px));
+  margin: 0 auto;
+
+  padding: 130px 0;
+}
+
+.soberania-prensa > h2 {
+  max-width: 850px;
+
+  margin-bottom: 28px;
+
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+
+  color: #182638;
+}
+
+.soberania-prensa-intro {
+  max-width: 650px;
+
+  margin-bottom: 75px;
+}
+
+/* ---------------------------------------------------------
+   VIDEO DESTACADO
+   --------------------------------------------------------- */
+
+.soberania-prensa-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+
+  gap: 65px;
+
+  align-items: center;
+
+  padding-bottom: 80px;
+
+  border-bottom: 1px solid rgba(24, 38, 56, 0.16);
+}
+
+.soberania-prensa-video {
+  width: 100%;
+
+  background: #182638;
+  overflow: hidden;
+}
+
+.soberania-prensa-video video {
+  width: 100%;
+  height: auto;
+}
+
+.soberania-prensa-feature-info {
+  padding-right: 20px;
+}
+
+.soberania-prensa-meta {
+  margin-bottom: 18px;
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: #92754a;
+}
+
+.soberania-prensa-feature-info h3 {
+  margin-bottom: 20px;
+
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+
+  color: #182638;
+}
+
+.soberania-prensa-feature-info p {
+  margin-bottom: 28px;
+}
+
+/* ---------------------------------------------------------
+   LISTADO EDITORIAL
+   --------------------------------------------------------- */
+
+.soberania-prensa-list {
+  width: 100%;
+}
+
+.soberania-prensa-item {
+  padding: 38px 0;
+
+  border-bottom: 1px solid rgba(24, 38, 56, 0.16);
+}
+
+.soberania-prensa-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 25px;
+}
+
+.soberania-prensa-item-top span,
+.soberania-prensa-item-top time {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+
+  color: #92754a;
+}
+
+.soberania-prensa-item-top time {
+  color: #727a82;
+}
+
+.soberania-prensa-item-content {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(300px, 1.15fr);
+
+  gap: 70px;
+
+  align-items: start;
+}
+
+.soberania-prensa-item-content small {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+
+  color: #92754a;
+}
+
+.soberania-prensa-item-content h3 {
+  margin: 0;
+
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+
+  color: #182638;
+}
+
+.soberania-prensa-item-content p {
+  margin: 0;
+}
+
+.soberania-prensa-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 25px;
+
+  color: #182638;
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(24, 38, 56, 0.35);
+
+  padding-bottom: 5px;
+
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.soberania-prensa-link:hover {
+  opacity: 0.55;
+  border-color: transparent;
+}
+
+.soberania-prensa-link span {
+  font-size: 14px;
+}
+
+/* =========================================================
    CONVOCATORIA
    ========================================================= */
 
@@ -489,6 +690,56 @@
 
 .soberania-contact-button {
   margin-top: 22px;
+}
+
+/* =========================================================
+   INICIATIVA MUNICIPAL
+   ========================================================= */
+
+.soberania-iniciativa {
+  width: 100%;
+  padding: 125px max(60px, calc((100vw - 900px) / 2));
+
+  background: #f7f6f3;
+
+  border-top: 1px solid rgba(24, 38, 56, 0.12);
+}
+
+.soberania-iniciativa h2 {
+  margin-bottom: 38px;
+
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+
+  color: #182638;
+}
+
+.soberania-iniciativa p {
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.soberania-iniciativa-download {
+  margin-top: 48px;
+  padding-top: 30px;
+
+  border-top: 1px solid rgba(24, 38, 56, 0.18);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.soberania-iniciativa-download > span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+
+  color: #92754a;
 }
 
 /* =========================================================
@@ -545,78 +796,7 @@
 }
 
 /* =========================================================
-   INICIATIVA MUNICIPAL
-   ========================================================= */
-
-.soberania-iniciativa {
-  width: 100%;
-  padding: 125px max(60px, calc((100vw - 900px) / 2));
-
-  background: #f7f6f3;
-
-  border-top: 1px solid rgba(24, 38, 56, 0.12);
-}
-
-.soberania-iniciativa h2 {
-  margin-bottom: 38px;
-
-  font-size: clamp(40px, 5vw, 66px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -1.8px;
-
-  color: #182638;
-}
-
-.soberania-iniciativa p {
-  max-width: 720px;
-  margin-bottom: 24px;
-}
-
-.soberania-iniciativa-download {
-  margin-top: 48px;
-  padding-top: 30px;
-
-  border-top: 1px solid rgba(24, 38, 56, 0.18);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.soberania-iniciativa-download > span {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-
-  color: #92754a;
-}
-
-@media (max-width: 600px) {
-
-  .soberania-iniciativa {
-    padding: 85px 25px;
-  }
-
-  .soberania-iniciativa h2 {
-    font-size: 38px;
-  }
-
-  .soberania-iniciativa-download {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 22px;
-  }
-
-  .soberania-iniciativa-download .soberania-contact-button {
-    width: 100%;
-  }
-
-}
-
-/* =========================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -630,6 +810,7 @@
   .soberania-gallery,
   .soberania-story,
   .soberania-andres,
+  .soberania-prensa,
   .soberania-convocatoria {
     width: min(100% - 50px, 680px);
   }
@@ -646,11 +827,10 @@
 
   .soberania-gallery-grid {
     grid-template-columns: 1fr 1fr;
+  }
 
-    grid-template-areas:
-      "main main"
-      "portrait portrait"
-      "collage phrases";
+  .soberania-gallery-grid figure {
+    width: 85%;
   }
 
   .soberania-presentaciones {
@@ -658,11 +838,29 @@
     padding-right: 25px;
   }
 
+  .soberania-prensa-feature {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .soberania-prensa-feature-info {
+    padding-right: 0;
+  }
+
+  .soberania-prensa-item-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .soberania-cierre img,
   .soberania-cierre-text {
     width: min(100% - 50px, 680px);
   }
 }
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -709,14 +907,11 @@
 
   .soberania-gallery-grid {
     grid-template-columns: 1fr;
-
-    grid-template-areas:
-      "main"
-      "portrait"
-      "collage"
-      "phrases";
-
     gap: 18px;
+  }
+
+  .soberania-gallery-grid figure {
+    width: 100%;
   }
 
   .soberania-story {
@@ -736,6 +931,60 @@
     grid-template-columns: 38px 1fr;
   }
 
+  /* -------------------------------------------------------
+     PRENSA
+     ------------------------------------------------------- */
+
+  .soberania-prensa {
+    padding: 85px 0;
+  }
+
+  .soberania-prensa > h2 {
+    font-size: 38px;
+  }
+
+  .soberania-prensa-intro {
+    margin-bottom: 50px;
+  }
+
+  .soberania-prensa-feature {
+    padding-bottom: 55px;
+    gap: 30px;
+  }
+
+  .soberania-prensa-feature-info h3 {
+    font-size: 30px;
+  }
+
+  .soberania-prensa-item {
+    padding: 30px 0;
+  }
+
+  .soberania-prensa-item-top {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+  }
+
+  .soberania-prensa-item-content {
+    gap: 16px;
+  }
+
+  .soberania-prensa-item-content h3 {
+    font-size: 26px;
+  }
+
+  .soberania-prensa-link {
+    margin-top: 22px;
+  }
+
+  /* -------------------------------------------------------
+     CONVOCATORIA
+     ------------------------------------------------------- */
+
   .soberania-convocatoria {
     padding: 85px 0;
   }
@@ -744,6 +993,33 @@
   .soberania-contact-button {
     width: 100%;
   }
+
+  /* -------------------------------------------------------
+     INICIATIVA
+     ------------------------------------------------------- */
+
+  .soberania-iniciativa {
+    padding: 85px 25px;
+  }
+
+  .soberania-iniciativa h2 {
+    font-size: 38px;
+  }
+
+  .soberania-iniciativa-download {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 22px;
+  }
+
+  .soberania-iniciativa-download .soberania-contact-button {
+    width: 100%;
+  }
+
+  /* -------------------------------------------------------
+     CIERRE
+     ------------------------------------------------------- */
 
   .soberania-cierre img {
     padding-top: 55px;

@@ -306,7 +306,7 @@ a {
   display: block;
 
   object-fit: cover;
-  object-position: center 50%;
+  object-position: center;
 
   transition: transform 0.55s ease;
 }

@@ -24,9 +24,7 @@ import Pescador from './pages/Pescador'
 import RondaDeMujeres from './pages/RondaDeMujeres'
 import Pinturas from './pages/Pinturas'
 import Proyectos from './pages/Proyectos'
-
-
-
+import AdminC421Guard from './pages/admin/AdminC421Guard'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -75,7 +73,6 @@ function App() {
       <Header />
 
       <Routes>
-
         <Route
           path="/"
           element={<HomePage />}
@@ -160,14 +157,21 @@ function App() {
           path="/proyectos/ronda-de-mujeres"
           element={<RondaDeMujeres />}
         />
+
         <Route
-           path="/pinturas"
-           element={<Pinturas />}
-        /> 
+          path="/pinturas"
+          element={<Pinturas />}
+        />
+
         <Route
-           path="/proyectos"
-           element={<Proyectos />}
-        /> 
+          path="/proyectos"
+          element={<Proyectos />}
+        />
+
+        <Route
+          path="/admin/c421"
+          element={<AdminC421Guard />}
+        />
       </Routes>
 
       <Footer />

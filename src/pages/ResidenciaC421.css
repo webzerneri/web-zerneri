@@ -16,7 +16,6 @@
   background: var(--c421-light);
   color: var(--c421-black);
 
-  /* espacio reservado para el header */
   padding-top: 76px;
 }
 
@@ -83,11 +82,6 @@
 
   z-index: 2;
 }
-
-/*
-   El hero ya contiene su propia composición gráfica.
-   El contenido HTML queda oculto para no duplicar textos.
-*/
 
 .c421-hero-content {
   position: absolute;
@@ -219,7 +213,6 @@
 .c421-intro-image img {
   width: 100%;
   aspect-ratio: 4 / 3;
-
   object-fit: cover;
 }
 
@@ -993,7 +986,14 @@
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 
-  gap: 28px;
+  /*
+     Más aire vertical entre:
+     - proyecto → fechas
+     - fechas → espacio
+     - resto de campos
+  */
+  row-gap: 44px;
+  column-gap: 28px;
 }
 
 .c421-form label {
@@ -1019,6 +1019,7 @@
 .c421-form input[type='email'],
 .c421-form input[type='tel'],
 .c421-form input[type='number'],
+.c421-form input[type='date'],
 .c421-form textarea {
   width: 100%;
 

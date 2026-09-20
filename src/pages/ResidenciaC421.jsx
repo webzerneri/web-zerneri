@@ -69,6 +69,8 @@ function ResidenciaC421() {
   const [enviado, setEnviado] = useState(false)
   const [enviando, setEnviando] = useState(false)
   const [errorEnvio, setErrorEnvio] = useState('')
+  const [fechaDesde, setFechaDesde] = useState('')
+
   const successRef = useRef(null)
   const formRef = useRef(null)
   const formHeadingRef = useRef(null)
@@ -112,10 +114,49 @@ function ResidenciaC421() {
     try {
       const form = event.currentTarget
       const formData = new FormData(form)
+
+      const fechaDesdeValue = formData.get('fechaDesde')
+      const fechaHastaValue = formData.get('fechaHasta')
+
+      if (!fechaDesdeValue || !fechaHastaValue) {
+        throw new Error('Debés indicar la fecha de ingreso y la fecha de salida.')
+      }
+
+      const fechaDesdeDate = new Date(`${fechaDesdeValue}T00:00:00`)
+      const fechaHastaDate = new Date(`${fechaHastaValue}T00:00:00`)
+
+      if (
+        Number.isNaN(fechaDesdeDate.getTime()) ||
+        Number.isNaN(fechaHastaDate.getTime())
+      ) {
+        throw new Error('Las fechas seleccionadas no son válidas.')
+      }
+
+      if (fechaHastaDate < fechaDesdeDate) {
+        throw new Error(
+          'La fecha de salida no puede ser anterior a la fecha de ingreso.'
+        )
+      }
+
+      const diferenciaMilisegundos =
+        fechaHastaDate.getTime() - fechaDesdeDate.getTime()
+
+      const dias = Math.round(
+        diferenciaMilisegundos / (1000 * 60 * 60 * 24)
+      )
+
+      if (dias < 1) {
+        throw new Error(
+          'La fecha de salida debe ser posterior a la fecha de ingreso.'
+        )
+      }
+
       const obrasFiles = Array.from(formData.getAll('obras')).filter(
         (file) => file instanceof File && file.size > 0
       )
+
       const materialFile = formData.get('materialAdicional')
+
       const material =
         materialFile instanceof File && materialFile.size > 0
           ? materialFile
@@ -133,7 +174,11 @@ function ResidenciaC421() {
         const extension = file.name.includes('.')
           ? file.name.split('.').pop().toLowerCase()
           : 'jpg'
-        const path = `${postulacionId}/obras/${String(i + 1).padStart(2, '0')}.${extension}`
+
+        const path = `${postulacionId}/obras/${String(i + 1).padStart(
+          2,
+          '0'
+        )}.${extension}`
 
         const { error: uploadError } = await supabase.storage
           .from('c421-postulaciones')
@@ -158,6 +203,7 @@ function ResidenciaC421() {
         const extension = material.name.includes('.')
           ? material.name.split('.').pop().toLowerCase()
           : 'bin'
+
         const path = `${postulacionId}/material-adicional.${extension}`
 
         const { error: uploadError } = await supabase.storage
@@ -191,7 +237,11 @@ function ResidenciaC421() {
           disciplina: formData.get('disciplina'),
           experiencias: formData.get('experiencias') || null,
           proyecto: formData.get('proyecto'),
-          dias: Number(formData.get('dias')),
+
+          fecha_desde: fechaDesdeValue,
+          fecha_hasta: fechaHastaValue,
+          dias,
+
           espacio: formData.get('espacio'),
           elementos: formData.get('elementos'),
           obras,
@@ -206,11 +256,14 @@ function ResidenciaC421() {
       if (insertError) throw insertError
 
       setEnviado(true)
+      setFechaDesde('')
       form.reset()
     } catch (error) {
       console.error('Error al enviar postulación C-421:', error)
+
       setErrorEnvio(
-        'No pudimos enviar la postulación. Revisá los archivos e intentá nuevamente.'
+        error?.message ||
+          'No pudimos enviar la postulación. Revisá los archivos e intentá nuevamente.'
       )
     } finally {
       setEnviando(false)
@@ -1109,7 +1162,7 @@ function ResidenciaC421() {
               </h3>
 
               <p>
-                 Con la media beca, el valor de la residencia queda en
+                Con la media beca, el valor de la residencia queda en
                 $50.000 por día e incluye todo lo mencionado en la
                 propuesta. La residencia es para mentorias, nunca se cobra
                 el hospedaje de los artistas.
@@ -1354,13 +1407,16 @@ function ResidenciaC421() {
                       <label>
 
                         <span>
-                          ¿Cuántos días querrías quedarte? *
+                          Fecha de ingreso *
                         </span>
 
                         <input
-                          type="number"
-                          name="dias"
-                          min="1"
+                          type="date"
+                          name="fechaDesde"
+                          value={fechaDesde}
+                          onChange={(event) =>
+                            setFechaDesde(event.target.value)
+                          }
                           required
                         />
 
@@ -1369,18 +1425,33 @@ function ResidenciaC421() {
                       <label>
 
                         <span>
-                          ¿Cuánto espacio necesitarías? *
+                          Fecha de salida *
                         </span>
 
                         <input
-                          type="text"
-                          name="espacio"
+                          type="date"
+                          name="fechaHasta"
+                          min={fechaDesde || undefined}
                           required
                         />
 
                       </label>
 
                     </div>
+
+                    <label>
+
+                      <span>
+                        ¿Cuánto espacio necesitarías? *
+                      </span>
+
+                      <input
+                        type="text"
+                        name="espacio"
+                        required
+                      />
+
+                    </label>
 
                     <label>
 
@@ -1514,6 +1585,7 @@ function ResidenciaC421() {
                     onClick={() => {
                       setEnviado(false)
                       setFormularioAbierto(false)
+                      setFechaDesde('')
 
                       requestAnimationFrame(() => {
                         formToggleRef.current?.scrollIntoView({

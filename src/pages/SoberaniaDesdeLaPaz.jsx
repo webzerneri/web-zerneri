@@ -10,8 +10,17 @@ const imagenes = {
   pared2: '/images/projects/soberania-desde-la-paz/pared2.png',
 }
 
+const videoVeteranos =
+  '/images/projects/soberania-desde-la-paz/video/Centro-Veteranos-Neuquen.mp4'
+
 function SoberaniaDesdeLaPaz() {
   const [videoAbierto, setVideoAbierto] = useState(false)
+  const [videoActual, setVideoActual] = useState('autor')
+
+  const abrirVideo = (video) => {
+    setVideoActual(video)
+    setVideoAbierto(true)
+  }
 
   return (
     <main className="soberania-page">
@@ -162,7 +171,7 @@ function SoberaniaDesdeLaPaz() {
 
           <button
             className="soberania-video-button"
-            onClick={() => setVideoAbierto(true)}
+            onClick={() => abrirVideo('autor')}
           >
             VER VIDEO
             <span>↗</span>
@@ -217,6 +226,174 @@ function SoberaniaDesdeLaPaz() {
               <small>Neuquén · Argentina</small>
             </div>
           </div>
+
+        </div>
+
+      </section>
+
+
+      {/* PRENSA Y REGISTRO */}
+      <section className="soberania-prensa">
+
+        <div className="soberania-kicker">
+          PRENSA Y REGISTRO
+        </div>
+
+        <h2>
+          La obra en circulación.
+        </h2>
+
+        <p className="soberania-prensa-intro">
+          Presentaciones, registros y publicaciones que acompañan
+          el recorrido de Soberanía desde la Paz y forman parte de
+          la memoria de la obra.
+        </p>
+
+
+        {/* REGISTRO AUDIOVISUAL */}
+
+        <article className="soberania-prensa-feature">
+
+          <div className="soberania-prensa-video">
+
+            <video
+              controls
+              preload="metadata"
+              playsInline
+            >
+              <source
+                src={videoVeteranos}
+                type="video/mp4"
+              />
+
+              Tu navegador no soporta la reproducción de video.
+            </video>
+
+          </div>
+
+          <div className="soberania-prensa-feature-info">
+
+            <div className="soberania-prensa-meta">
+              REGISTRO AUDIOVISUAL
+            </div>
+
+            <h3>
+              Acto por Malvinas
+            </h3>
+
+            <p>
+              Registro de la presentación de Soberanía desde la Paz
+              junto al Centro de Veteranos de Malvinas de Neuquén.
+            </p>
+
+            <button
+              className="soberania-video-button"
+              onClick={() => abrirVideo('veteranos')}
+            >
+              VER VIDEO
+              <span>↗</span>
+            </button>
+
+          </div>
+
+        </article>
+
+
+        {/* PUBLICACIONES */}
+
+        <div className="soberania-prensa-list">
+
+          <article className="soberania-prensa-item">
+
+            <div className="soberania-prensa-item-top">
+
+              <span>
+                EL DIGITAL NEUQUÉN
+              </span>
+
+              <time>
+                03 SEP 2026
+              </time>
+
+            </div>
+
+            <div className="soberania-prensa-item-content">
+
+              <div>
+                <small>ARTÍCULO</small>
+
+                <h3>
+                  Malvinas, con relieve en el corazón
+                </h3>
+              </div>
+
+              <p>
+                Una nota sobre Soberanía desde la Paz, la obra que
+                Andrés Zerneri realizará junto al Centro de Veteranos
+                de Guerra de Neuquén, con participación de escuelas
+                durante los días 15, 16 y 17 de septiembre.
+              </p>
+
+            </div>
+
+            <a
+              href="https://eldigitalneuquen.com.ar/2026/09/03/malvinas-con-relieve-en-el-corazon/"
+              target="_blank"
+              rel="noreferrer"
+              className="soberania-prensa-link"
+            >
+              LEER PUBLICACIÓN
+              <span>↗</span>
+            </a>
+
+          </article>
+
+
+          <article className="soberania-prensa-item">
+
+            <div className="soberania-prensa-item-top">
+
+              <span>
+                MARIANO MANSILLA
+              </span>
+
+              <time>
+                VIDEO · INSTAGRAM
+              </time>
+
+            </div>
+
+            <div className="soberania-prensa-item-content">
+
+              <div>
+                <small>VIDEO</small>
+
+                <h3>
+                  Soberanía desde la Paz
+                </h3>
+              </div>
+
+              <p>
+                Video de Mariano Mansilla sobre la iniciativa del
+                Estudio Jurídico Mariano Mansilla y Asociados junto
+                al Centro de Veteranos de Malvinas de Neuquén, que
+                adquirieron la obra para su realización en el marco
+                de esta propuesta colectiva.
+              </p>
+
+            </div>
+
+            <a
+              href="https://www.instagram.com/reel/Dct_B_FTZIL/?igsi=MWpZcZ3Nzb2tsdDBl"
+              target="_blank"
+              rel="noreferrer"
+              className="soberania-prensa-link"
+            >
+              VER PUBLICACIÓN
+              <span>↗</span>
+            </a>
+
+          </article>
 
         </div>
 
@@ -330,12 +507,14 @@ function SoberaniaDesdeLaPaz() {
       </section>
 
 
-      {/* VIDEO */}
+      {/* VIDEO MODAL */}
+
       {videoAbierto && (
         <div
           className="soberania-video-modal"
           onClick={() => setVideoAbierto(false)}
         >
+
           <button
             className="soberania-video-close"
             onClick={() => setVideoAbierto(false)}
@@ -347,13 +526,21 @@ function SoberaniaDesdeLaPaz() {
           <video
             controls
             autoPlay
+            playsInline
             onClick={(e) => e.stopPropagation()}
           >
+
             <source
-              src="/images/projects/soberania-desde-la-paz/video/soberania-desde-la-paz.mp4"
+              src={
+                videoActual === 'autor'
+                  ? '/images/projects/soberania-desde-la-paz/video/soberania-desde-la-paz.mp4'
+                  : videoVeteranos
+              }
               type="video/mp4"
             />
+
           </video>
+
         </div>
       )}
 
